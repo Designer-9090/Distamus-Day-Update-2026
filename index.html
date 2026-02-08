@@ -3,907 +3,506 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Distamus Day Update 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Distamus Day Update 2026 | Keynote</title>
+    <link rel="icon" type="image/webp" href="distamuslogo.webp">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --color-text: #ffffff;
-            --color-text-secondary: #b4b8d4;
-            --color-bg: #0a0e1a;
-            --color-card: rgba(30, 35, 58, 0.6);
-            --gradient-1: #667eea;
-            --gradient-2: #764ba2;
-            --gradient-3: #f093fb;
-            --gradient-4: #4facfe;
+            --bg-color: #030305;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --card-hover-border: rgba(255, 255, 255, 0.2);
+            --accent-primary: #8b5cf6;
+            --accent-secondary: #3b82f6;
+            --accent-glow: #6366f1;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Lexend', sans-serif;
-            color: var(--color-text);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-body);
             overflow-x: hidden;
             line-height: 1.6;
         }
 
-        /* Animated Gradient Background */
-        .animated-gradient {
+        /* --- BACKGROUND EFFECTS --- */
+        .fixed-background {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
-            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #4facfe, #00f2fe, #4facfe);
-            background-size: 400% 400%;
-            animation: gradientFlow 15s ease infinite;
+            overflow: hidden;
         }
 
-        @keyframes gradientFlow {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+        /* Technical Grid Overlay */
+        .grid-overlay {
+            position: absolute;
+            width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+            -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
         }
 
-        /* Overlay for better text readability */
-        .gradient-overlay {
+        /* Moving Orbs (Mesh Gradient) */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+            animation: floatOrb 20s infinite ease-in-out;
+        }
+        .orb-1 { width: 50vw; height: 50vw; background: var(--accent-primary); top: -10%; left: -10%; animation-delay: 0s; }
+        .orb-2 { width: 40vw; height: 40vw; background: var(--accent-secondary); bottom: -10%; right: -10%; animation-delay: -5s; }
+        .orb-3 { width: 30vw; height: 30vw; background: var(--accent-glow); top: 40%; left: 40%; animation-delay: -10s; opacity: 0.4; }
+
+        @keyframes floatOrb {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        /* Mouse Spotlight */
+        .spotlight {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: rgba(10, 14, 26, 0.75);
-        }
-
-        /* Floating particles */
-        .particle {
-            position: fixed;
-            width: 4px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.5);
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
+            transform: translate(-50%, -50%);
             z-index: 0;
-            animation: float 20s infinite;
+            mix-blend-mode: overlay;
+            transition: opacity 0.5s ease;
         }
 
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0) translateX(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) translateX(50px);
-                opacity: 0;
-            }
-        }
-
-        /* Header */
+        /* --- UI COMPONENTS --- */
         header {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            padding: 1.5rem 6%;
-            background: rgba(10, 14, 26, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            z-index: 1000;
-            animation: slideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            top: 0; width: 100%;
+            padding: 1.5rem 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 100;
+            background: rgba(3, 3, 5, 0.5);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--card-border);
         }
 
-        @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .logo-icon {
-            width: 45px;
-            height: 45px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-        }
-
-        .logo-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .site-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.2rem;
+        .logo {
+            font-family: var(--font-heading);
             font-weight: 700;
-            color: var(--color-text);
-            letter-spacing: -0.3px;
+            font-size: 1.25rem;
+            letter-spacing: -0.5px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .logo-box {
+            width: 32px; height: 32px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 6px;
         }
 
-        /* Section Container */
-        .section-container {
+        .cta-header {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            border: 1px solid var(--card-border);
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+        .cta-header:hover { color: white; border-color: var(--accent-glow); background: rgba(255,255,255,0.05); }
+
+        /* --- HERO SECTION --- */
+        .hero {
             min-height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            padding: 8rem 5% 4rem;
             position: relative;
+            z-index: 1;
         }
 
-        /* FIRST SECTION - Hero (No Footer) */
-        .hero-section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 8rem 6% 4rem;
-            position: relative;
-        }
-
-        .hero-grid {
-            max-width: 1400px;
+        .hero-container {
+            max-width: 1200px;
             width: 100%;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.2fr 0.8fr;
             gap: 4rem;
             align-items: center;
         }
 
-        .hero-content {
-            animation: fadeInLeft 1s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .hero-badge {
+        .tagline {
             display: inline-block;
-            padding: 0.5rem 1.5rem;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
-            letter-spacing: 2px;
-            margin-bottom: 2rem;
-            backdrop-filter: blur(10px);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent-secondary);
+            margin-bottom: 1.5rem;
+            padding: 6px 12px;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 4px;
         }
 
-        .hero-content h1 {
-            font-family: 'Poppins', sans-serif;
-            font-size: clamp(3.5rem, 7vw, 5.5rem);
-            font-weight: 900;
+        h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(3.5rem, 6vw, 5rem);
             line-height: 1.1;
+            font-weight: 700;
             margin-bottom: 1.5rem;
             letter-spacing: -2px;
         }
 
-        .hero-content h1 .gradient-text {
-            background: linear-gradient(135deg, #ffffff 0%, #f093fb 50%, #4facfe 100%);
+        .text-gradient {
+            background: linear-gradient(to right, #fff, #94a3b8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
-        .hero-description {
-            font-size: 1.3rem;
-            color: var(--color-text-secondary);
+        .hero-desc {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
             margin-bottom: 3rem;
-            line-height: 1.8;
         }
 
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 1.2rem 2.5rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s;
-        }
-
-        .cta-button:hover::before {
-            left: 100%;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 20px 45px rgba(102, 126, 234, 0.6);
-        }
-
-        /* Hero Visual Side */
-        .hero-visual {
-            animation: fadeInRight 1s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-        }
-
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .countdown-card {
-            background: rgba(30, 35, 58, 0.5);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .btn-primary {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 1rem 2.5rem;
+            background: white;
+            color: black;
+            font-weight: 600;
             border-radius: 30px;
-            padding: 3rem;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
-            position: relative;
-            overflow: hidden;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
         }
 
-        .countdown-card::before {
+        /* --- GLASS CARDS --- */
+        .glass-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(12px);
+            border-radius: 24px;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+        }
+
+        .countdown-wrapper {
+            position: relative;
+        }
+        /* Glow effect behind countdown */
+        .countdown-wrapper::before {
             content: '';
             position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(240, 147, 251, 0.15) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
+            inset: -20px;
+            background: linear-gradient(45deg, var(--accent-primary), transparent, var(--accent-secondary));
+            filter: blur(40px);
+            opacity: 0.3;
+            z-index: -1;
         }
 
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .countdown-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .countdown-display {
+        .countdown-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            position: relative;
-            z-index: 1;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
         }
 
-        .countdown-item {
+        .count-item {
             text-align: center;
+            background: rgba(0,0,0,0.2);
+            padding: 1.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.05);
         }
 
-        .countdown-number {
-            font-family: 'Poppins', sans-serif;
+        .count-number {
+            font-family: 'Space Grotesk', monospace;
             font-size: 3rem;
-            font-weight: 800;
+            font-weight: 700;
             line-height: 1;
-            background: linear-gradient(135deg, #ffffff 0%, #f093fb 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-variant-numeric: tabular-nums;
         }
 
-        .countdown-label {
-            font-size: 0.9rem;
-            color: var(--color-text-secondary);
+        .count-label {
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-top: 0.5rem;
+            color: var(--text-muted);
         }
 
-        .event-info {
-            margin-top: 2.5rem;
-            padding-top: 2.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
+        /* --- FEATURES & INFO --- */
+        .info-section {
+            padding: 8rem 5%;
             position: relative;
             z-index: 1;
-        }
-
-        .event-date-large {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .event-time {
-            color: var(--color-text-secondary);
-            font-size: 1.1rem;
-        }
-
-        /* Feature Cards on Hero */
-        .feature-mini-cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .feature-mini-card {
-            background: rgba(30, 35, 58, 0.4);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 2rem 1.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .feature-mini-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(240, 147, 251, 0.5);
-            box-shadow: 0 15px 35px rgba(240, 147, 251, 0.2);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature-mini-card h3 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .feature-mini-card p {
-            font-size: 0.95rem;
-            color: var(--color-text-secondary);
-            line-height: 1.6;
-        }
-
-        /* SECOND SECTION - Details & FAQ (With Footer) */
-        .details-section {
-            min-height: 100vh;
-            padding: 6rem 6% 4rem;
-            position: relative;
-        }
-
-        .details-container {
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 4rem;
-            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            max-width: 800px;
+            margin: 0 auto 5rem;
         }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
+        
         .section-header h2 {
-            font-family: 'Poppins', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 900;
+            font-family: var(--font-heading);
+            font-size: 3rem;
             margin-bottom: 1rem;
-            letter-spacing: -1px;
         }
 
-        .section-header p {
-            font-size: 1.2rem;
-            color: var(--color-text-secondary);
-        }
-
-        /* Details Grid */
-        .details-grid {
+        .grid-3 {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 5rem;
-        }
-
-        .details-card {
-            background: rgba(30, 35, 58, 0.5);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 25px;
-            padding: 3rem;
-            transition: all 0.4s ease;
-            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .details-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(102, 126, 234, 0.3);
-        }
-
-        .details-card h3 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #f093fb 0%, #4facfe 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .details-card p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--color-text-secondary);
-        }
-
-        /* FAQ Section */
-        .faq-container {
-            max-width: 900px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        .faq-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 800;
-            text-align: center;
-            margin-bottom: 3rem;
-            background: linear-gradient(135deg, #ffffff 0%, #f093fb 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 2.5rem;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+        .feature-card:hover {
+            border-color: var(--card-hover-border);
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.05);
+        }
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+        .feature-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* --- FAQ --- */
+        .faq-wrapper {
+            max-width: 800px;
+            margin: 5rem auto 0;
         }
 
         .faq-item {
-            background: rgba(30, 35, 58, 0.5);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 20px;
-            margin-bottom: 1.5rem;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .faq-item:hover {
-            border-color: rgba(240, 147, 251, 0.5);
+            border-bottom: 1px solid var(--card-border);
+            margin-bottom: 1rem;
         }
 
         .faq-question {
-            padding: 2rem;
-            font-family: 'Poppins', sans-serif;
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            color: white;
+            padding: 1.5rem 0;
             font-size: 1.2rem;
-            font-weight: 600;
+            font-family: var(--font-heading);
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            user-select: none;
-            transition: all 0.3s ease;
         }
-
-        .faq-question:hover {
-            color: #f093fb;
-        }
-
-        .faq-icon {
-            font-size: 1.5rem;
-            color: #4facfe;
-            transition: transform 0.3s ease;
-            flex-shrink: 0;
-            margin-left: 1rem;
-        }
-
-        .faq-item.active .faq-icon {
-            transform: rotate(180deg);
-        }
+        .faq-question:hover { color: var(--accent-secondary); }
 
         .faq-answer {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease, padding 0.4s ease;
-            padding: 0 2rem;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            color: var(--text-muted);
+            padding-right: 2rem;
         }
-
         .faq-item.active .faq-answer {
-            max-height: 500px;
-            padding: 0 2rem 2rem;
+            max-height: 200px;
+            padding-bottom: 1.5rem;
         }
+        .chevron { transition: 0.3s; }
+        .faq-item.active .chevron { transform: rotate(180deg); color: var(--accent-primary); }
 
-        .faq-answer p {
-            color: var(--color-text-secondary);
-            line-height: 1.8;
-            font-size: 1.05rem;
-        }
-
-        .faq-answer a {
-            color: #4facfe;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .faq-answer a:hover {
-            color: #f093fb;
-        }
-
-        /* Footer (Only in second section) */
+        /* --- FOOTER --- */
         footer {
-            padding: 4rem 6% 3rem;
-            background: rgba(10, 14, 26, 0.8);
-            backdrop-filter: blur(20px);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid var(--card-border);
+            padding: 3rem 5%;
             text-align: center;
             margin-top: 5rem;
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .footer-logo {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #f093fb 0%, #4facfe 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1rem;
-        }
-
-        .footer-text {
-            color: var(--color-text-secondary);
-            font-size: 1rem;
-        }
-
-        /* Scroll Indicator */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 3rem;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-            cursor: pointer;
-            opacity: 0.7;
-            transition: opacity 0.3s;
-        }
-
-        .scroll-indicator:hover {
-            opacity: 1;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateX(-50%) translateY(0);
-            }
-            40% {
-                transform: translateX(-50%) translateY(-10px);
-            }
-            60% {
-                transform: translateX(-50%) translateY(-5px);
-            }
-        }
-
-        .scroll-indicator span {
-            display: block;
-            width: 30px;
-            height: 50px;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            border-radius: 25px;
             position: relative;
+            z-index: 1;
+            background: #030305;
+        }
+        .footer-logo {
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: inline-block;
+            font-family: var(--font-heading);
         }
 
-        .scroll-indicator span::before {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 6px;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 50%;
-            animation: scrollDown 2s infinite;
+        /* --- ANIMATIONS --- */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+        .reveal-up.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        @keyframes scrollDown {
-            0% {
-                top: 10px;
-                opacity: 1;
-            }
-            100% {
-                top: 30px;
-                opacity: 0;
-            }
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .hero-container { grid-template-columns: 1fr; text-align: center; }
+            .hero-desc { margin: 0 auto 3rem; }
+            .countdown-wrapper { max-width: 500px; margin: 0 auto; }
+            h1 { font-size: 3rem; }
         }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .hero-grid {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .details-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .feature-mini-cards {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .countdown-display {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-
-            .countdown-number {
-                font-size: 2.5rem;
-            }
-
-            .details-card {
-                padding: 2rem;
-            }
-
-            .faq-question {
-                padding: 1.5rem;
-                font-size: 1rem;
-            }
+        @media (max-width: 600px) {
+            .countdown-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+            .count-number { font-size: 2rem; }
+            .hero { padding-top: 6rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Animated Gradient Background -->
-    <div class="animated-gradient"></div>
-    <div class="gradient-overlay"></div>
 
-    <!-- Floating Particles -->
-    <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
-    <div class="particle" style="left: 20%; animation-delay: 2s;"></div>
-    <div class="particle" style="left: 30%; animation-delay: 4s;"></div>
-    <div class="particle" style="left: 40%; animation-delay: 1s;"></div>
-    <div class="particle" style="left: 50%; animation-delay: 3s;"></div>
-    <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
-    <div class="particle" style="left: 70%; animation-delay: 2.5s;"></div>
-    <div class="particle" style="left: 80%; animation-delay: 4.5s;"></div>
-    <div class="particle" style="left: 90%; animation-delay: 1.5s;"></div>
+    <div class="fixed-background">
+        <div class="grid-overlay"></div>
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="spotlight" id="spotlight"></div>
+    </div>
 
-    <!-- Header -->
     <header>
-        <div class="header-content">
-            <div class="logo-icon">
-                <img src="logo.png" alt="Distamus Logo" onerror="this.style.display='none'; this.parentElement.innerHTML='👔';">
-            </div>
-            <div class="site-title">Distamus Day Update</div>
+        <div class="logo">
+            <div class="logo-box"></div>
+            Distamus
         </div>
+        <a href="#info" class="cta-header">Info Evento</a>
     </header>
 
-    <!-- FIRST SECTION - Hero (No Footer) -->
-    <section class="section-container hero-section">
-        <div class="hero-grid">
-            <div class="hero-content">
-                <div class="hero-badge">EVENTO 2026</div>
-                <h1>
-                    <span class="gradient-text">¡Hola 2026!</span>
-                </h1>
-                <p class="hero-description">
-                    Comenzamos a preparar el Distamus Day Update. Un evento único que celebra 
-                    la innovación, la creatividad y el futuro. ¡Esperamos que os guste!
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content reveal-up">
+                <span class="tagline">Evento Global 2026</span>
+                <h1>El futuro empieza<br><span class="text-gradient">el 4 de Julio.</span></h1>
+                <p class="hero-desc">
+                    Distamus Day Update. Únete a nosotros para descubrir la próxima generación de tecnología, creatividad y comunidad.
                 </p>
-                <a href="#details" class="cta-button">
-                    Ver presentación de 2026 →
-                </a>
-
-                <div class="feature-mini-cards">
-                    <div class="feature-mini-card">
-                        <div class="feature-icon">🚀</div>
-                        <h3>Innovación</h3>
-                        <p>Últimas novedades tecnológicas</p>
-                    </div>
-                    <div class="feature-mini-card">
-                        <div class="feature-icon">🎨</div>
-                        <h3>Creatividad</h3>
-                        <p>Experiencias únicas</p>
-                    </div>
-                    <div class="feature-mini-card">
-                        <div class="feature-icon">🌟</div>
-                        <h3>Comunidad</h3>
-                        <p>Conecta con otros</p>
-                    </div>
-                </div>
+                <a href="#info" class="btn-primary">Reservar sitio</a>
             </div>
 
-            <div class="hero-visual">
-                <div class="countdown-card">
-                    <div class="countdown-title">Cuenta Atrás</div>
-                    <div class="countdown-display">
-                        <div class="countdown-item">
-                            <div class="countdown-number" id="days">169</div>
-                            <div class="countdown-label">Días</div>
+            <div class="hero-visual reveal-up" style="transition-delay: 0.2s;">
+                <div class="glass-card countdown-wrapper">
+                    <div style="text-align:center; margin-bottom: 20px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem; color: var(--accent-secondary);">Tiempo Restante</div>
+                    <div class="countdown-grid">
+                        <div class="count-item">
+                            <span class="count-number" id="days">00</span>
+                            <span class="count-label">Días</span>
                         </div>
-                        <div class="countdown-item">
-                            <div class="countdown-number" id="hours">12</div>
-                            <div class="countdown-label">Horas</div>
+                        <div class="count-item">
+                            <span class="count-number" id="hours">00</span>
+                            <span class="count-label">Horas</span>
                         </div>
-                        <div class="countdown-item">
-                            <div class="countdown-number" id="minutes">35</div>
-                            <div class="countdown-label">Minutos</div>
+                        <div class="count-item">
+                            <span class="count-number" id="minutes">00</span>
+                            <span class="count-label">Min</span>
                         </div>
-                        <div class="countdown-item">
-                            <div class="countdown-number" id="seconds">42</div>
-                            <div class="countdown-label">Segundos</div>
+                        <div class="count-item">
+                            <span class="count-number" id="seconds">00</span>
+                            <span class="count-label">Seg</span>
                         </div>
                     </div>
-                    <div class="event-info">
-                        <div class="event-date-large">Sábado, 4 de Julio 2026</div>
-                        <div class="event-time">De 16h a 18h</div>
+                    <div style="margin-top: 25px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px;">
+                        <span style="font-size: 0.9rem; color: #fff;">4 Julio, 2026</span>
+                        <span style="color: var(--text-muted); margin: 0 10px;">•</span>
+                        <span style="font-size: 0.9rem; color: var(--text-muted);">16:00 CET</span>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="scroll-indicator" onclick="document.getElementById('details').scrollIntoView({behavior: 'smooth'})">
-            <span></span>
+    <section id="info" class="info-section">
+        <div class="section-header reveal-up">
+            <h2>Innovación sin límites</h2>
+            <p style="color: var(--text-muted); font-size: 1.1rem;">Todo lo que hemos estado construyendo en secreto durante el último año.</p>
+        </div>
+
+        <div class="grid-3">
+            <div class="feature-card reveal-up">
+                <div class="feature-icon">✨</div>
+                <h3>Next Gen UI</h3>
+                <p>Presentaremos la nueva interfaz visual que redefinirá la experiencia de usuario en todo el ecosistema.</p>
+            </div>
+            <div class="feature-card reveal-up" style="transition-delay: 0.1s;">
+                <div class="feature-icon">🚀</div>
+                <h3>Core Speed</h3>
+                <p>Nuevos motores de procesamiento que hacen que Distamus sea 4x más rápido que la versión anterior.</p>
+            </div>
+            <div class="feature-card reveal-up" style="transition-delay: 0.2s;">
+                <div class="feature-icon">🌐</div>
+                <h3>Comunidad Global</h3>
+                <p>Herramientas de conexión en tiempo real para creadores y desarrolladores de todo el mundo.</p>
+            </div>
+        </div>
+
+        <div class="faq-wrapper reveal-up">
+            <h3 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 2rem;">Preguntas Frecuentes</h3>
+            
+            <div class="faq-item">
+                <button class="faq-question">
+                    ¿Será un evento presencial o virtual?
+                    <span class="chevron">▼</span>
+                </button>
+                <div class="faq-answer">
+                    Es un evento híbrido. Podrás asistir en persona en Madrid o seguir el streaming en 4K desde cualquier parte del mundo.
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    ¿Es necesario registrarse?
+                    <span class="chevron">▼</span>
+                </button>
+                <div class="faq-answer">
+                    Sí, el registro es gratuito pero necesario para obtener acceso al streaming exclusivo y a las betas que lanzaremos ese día.
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    ¿Habrá grabación disponible?
+                    <span class="chevron">▼</span>
+                </button>
+                <div class="faq-answer">
+                    Todo el evento quedará grabado y se subirá a nuestro canal oficial y blog minutos después de finalizar.
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- SECOND SECTION - Details & FAQ (With Footer) -->
-    <section class="section-container details-section" id="details">
-        <div class="details-container">
-            <div class="section-header">
-                <h2>Distamus Day Update</h2>
-                <p>Todo lo que necesitas saber sobre el evento</p>
-            </div>
-
-            <div class="details-grid">
-                <div class="details-card">
-                    <h3>¿Qué es DDU?</h3>
-                    <p>
-                        DDU (Distamus Day Update) es el evento anual de Distamus, celebrado cada 4 de julio, 
-                        donde se presentan las grandes novedades del ecosistema. No es una simple actualización, 
-                        sino un momento clave que marca un antes y un después en la evolución de todos los servicios.
-                    </p>
-                </div>
-
-                <div class="details-card">
-                    <h3>¿Por qué asistir?</h3>
-                    <p>
-                        Serás el primero en descubrir las innovaciones que transformarán el futuro de Distamus. 
-                        Conectarás con una comunidad apasionada y vivirás experiencias únicas diseñadas para 
-                        inspirar y sorprender. ¡No te lo puedes perder!
-                    </p>
-                </div>
-            </div>
-
-            <div class="faq-container">
-                <h3 class="faq-title">Preguntas Frecuentes</h3>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        ¿Cuándo es Distamus Day Update?
-                        <span class="faq-icon">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Distamus Day Update se celebrará el 4 de julio de 2026, de 16h a 18h.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        ¿Dónde se publicarán todas las novedades?
-                        <span class="faq-icon">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Todo lo nuevo que anunciemos podrás encontrarlo en el blog de <a href="#">Distamus Blogs</a></p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        ¿El Distamus Day Update es un evento anual?
-                        <span class="faq-icon">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Correcto, Distamus Day Update es un evento único y anual que se celebra a principios del verano.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        ¿Cómo puedo participar?
-                        <span class="faq-icon">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Muy pronto anunciaremos los detalles sobre cómo registrarte. Mantente atento a nuestras redes sociales y al blog oficial para no perderte ninguna actualización.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Footer (Only in second section) -->
-        <footer>
-            <div class="footer-content">
-                <div class="footer-logo">Distamus Day Update</div>
-                <p class="footer-text">© 2026 Distamus. Todos los derechos reservados.</p>
-            </div>
-        </footer>
-    </section>
+    <footer>
+        <div class="footer-logo">Distamus Inc.</div>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">© 2026 Distamus Day Update. Diseñado para el futuro.</p>
+    </footer>
 
     <script>
-        // Countdown Timer
+        // --- Countdown Logic ---
         function updateCountdown() {
             const eventDate = new Date('July 4, 2026 16:00:00').getTime();
             const now = new Date().getTime();
@@ -914,64 +513,50 @@
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            document.getElementById('days').textContent = days;
-            document.getElementById('hours').textContent = hours;
-            document.getElementById('minutes').textContent = minutes;
-            document.getElementById('seconds').textContent = seconds;
+            // Helper to add leading zeros
+            const format = (num) => num < 10 ? `0${num}` : num;
+
+            document.getElementById('days').innerText = format(days);
+            document.getElementById('hours').innerText = format(hours);
+            document.getElementById('minutes').innerText = format(minutes);
+            document.getElementById('seconds').innerText = format(seconds);
         }
-
-        updateCountdown();
         setInterval(updateCountdown, 1000);
+        updateCountdown();
 
-        // FAQ Accordion
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const faqItem = question.parentElement;
-                const isActive = faqItem.classList.contains('active');
+        // --- Spotlight Mouse Effect ---
+        const spotlight = document.getElementById('spotlight');
+        document.addEventListener('mousemove', (e) => {
+            // Smooth movement using requestAnimationFrame not strictly necessary for simple css translate but good practice
+            spotlight.style.left = `${e.clientX}px`;
+            spotlight.style.top = `${e.clientY}px`;
+        });
+
+        // --- FAQ Logic ---
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                const isActive = item.classList.contains('active');
                 
-                document.querySelectorAll('.faq-item').forEach(item => {
-                    item.classList.remove('active');
-                });
-                
+                // Close all others
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+
                 if (!isActive) {
-                    faqItem.classList.add('active');
+                    item.classList.add('active');
                 }
             });
         });
 
-        // Auto-open first FAQ
-        document.querySelector('.faq-item')?.classList.add('active');
-
-        // Gradient Animation Speed Based on Scroll
-        let lastScrollY = window.scrollY;
-        const gradient = document.querySelector('.animated-gradient');
-        
-        window.addEventListener('scroll', () => {
-            const currentScrollY = window.scrollY;
-            const scrollSpeed = Math.abs(currentScrollY - lastScrollY);
-            
-            // Increase animation speed based on scroll speed
-            const baseSpeed = 15;
-            const newSpeed = Math.max(3, baseSpeed - (scrollSpeed * 0.5));
-            
-            gradient.style.animationDuration = `${newSpeed}s`;
-            
-            lastScrollY = currentScrollY;
-        });
-
-        // Smooth scrolling for all anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+        // --- Scroll Animations (Intersection Observer) ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
                 }
             });
-        });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
