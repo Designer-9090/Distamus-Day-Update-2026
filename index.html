@@ -5,20 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Distamus Day Update 2026 | Keynote</title>
     <link rel="icon" type="image/webp" href="distamuslogo.webp">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --bg-color: #030305;
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --card-border: rgba(255, 255, 255, 0.08);
-            --card-hover-border: rgba(255, 255, 255, 0.2);
-            --accent-primary: #8b5cf6;
-            --accent-secondary: #3b82f6;
-            --accent-glow: #6366f1;
+            /* Colores Base - Más profundos para contraste profesional */
+            --bg-color: #050507;
+            --card-bg: rgba(255, 255, 255, 0.02);
+            --card-border: rgba(255, 255, 255, 0.06);
+            --card-hover-border: rgba(255, 255, 255, 0.15);
+            
+            /* Acentos */
+            --accent-primary: #7c3aed;   /* Violeta intenso */
+            --accent-secondary: #2563eb; /* Azul corporativo */
+            --accent-glow: #8b5cf6;
+            
+            /* Textos */
             --text-main: #ffffff;
-            --text-muted: #94a3b8;
-            --font-heading: 'Space Grotesk', sans-serif;
-            --font-body: 'Inter', sans-serif;
+            --text-secondary: #cbd5e1;
+            --text-muted: #64748b;
+            
+            /* Tipografías */
+            --font-heading: 'Lexend', sans-serif;
+            --font-body: 'Poppins', sans-serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -28,95 +40,108 @@
             color: var(--text-main);
             font-family: var(--font-body);
             overflow-x: hidden;
-            line-height: 1.6;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased; /* Texto más nítido en Mac */
         }
 
-        /* --- BACKGROUND EFFECTS --- */
+        /* --- BACKGROUND SYSTEM --- */
         .fixed-background {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            inset: 0;
             z-index: -1;
             overflow: hidden;
         }
 
-        /* Technical Grid Overlay */
+        /* Ruido (Noise) para textura profesional */
+        .noise-overlay {
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+            opacity: 0.4;
+            pointer-events: none;
+            z-index: 1;
+        }
+
         .grid-overlay {
             position: absolute;
-            width: 100%; height: 100%;
+            inset: 0;
             background-image: 
                 linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
-            -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 100%);
+            -webkit-mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 100%);
         }
 
-        /* Moving Orbs (Mesh Gradient) */
         .orb {
             position: absolute;
             border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.6;
-            animation: floatOrb 20s infinite ease-in-out;
+            filter: blur(100px);
+            opacity: 0.5;
+            animation: floatOrb 25s infinite ease-in-out alternate;
         }
-        .orb-1 { width: 50vw; height: 50vw; background: var(--accent-primary); top: -10%; left: -10%; animation-delay: 0s; }
-        .orb-2 { width: 40vw; height: 40vw; background: var(--accent-secondary); bottom: -10%; right: -10%; animation-delay: -5s; }
-        .orb-3 { width: 30vw; height: 30vw; background: var(--accent-glow); top: 40%; left: 40%; animation-delay: -10s; opacity: 0.4; }
+        .orb-1 { width: 60vw; height: 60vw; background: var(--accent-primary); top: -20%; left: -10%; opacity: 0.2; }
+        .orb-2 { width: 50vw; height: 50vw; background: var(--accent-secondary); bottom: -10%; right: -20%; animation-delay: -5s; opacity: 0.15; }
 
         @keyframes floatOrb {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -50px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(30px, 50px); }
         }
 
-        /* Mouse Spotlight */
         .spotlight {
             position: fixed;
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+            width: 800px; height: 800px;
+            background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 60%);
             border-radius: 50%;
             pointer-events: none;
             transform: translate(-50%, -50%);
-            z-index: 0;
-            mix-blend-mode: overlay;
+            z-index: 2;
             transition: opacity 0.5s ease;
         }
 
-        /* --- UI COMPONENTS --- */
+        /* --- HEADER --- */
         header {
             position: fixed;
             top: 0; width: 100%;
-            padding: 1.5rem 5%;
+            padding: 1.25rem 5%;
             display: flex; justify-content: space-between; align-items: center;
             z-index: 100;
-            background: rgba(3, 3, 5, 0.5);
-            backdrop-filter: blur(15px);
+            background: rgba(5, 5, 7, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--card-border);
         }
 
         .logo {
             font-family: var(--font-heading);
             font-weight: 700;
-            font-size: 1.25rem;
-            letter-spacing: -0.5px;
-            display: flex; align-items: center; gap: 10px;
-        }
-        .logo-box {
-            width: 32px; height: 32px;
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            border-radius: 6px;
+            font-size: 1.2rem;
+            letter-spacing: -0.03em;
+            display: flex; align-items: center; gap: 12px;
+            color: var(--text-main);
         }
 
-        .cta-header {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            border: 1px solid var(--card-border);
-            padding: 8px 16px;
-            border-radius: 20px;
-            transition: 0.3s;
-            text-decoration: none;
+        .logo img {
+            transition: transform 0.3s ease;
         }
-        .cta-header:hover { color: white; border-color: var(--accent-glow); background: rgba(255,255,255,0.05); }
+        .logo:hover img { transform: scale(1.05); }
+
+        .cta-header {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            border: 1px solid var(--card-border);
+            padding: 8px 20px;
+            border-radius: 100px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            background: rgba(255,255,255,0.01);
+        }
+        .cta-header:hover { 
+            color: white; 
+            border-color: var(--accent-secondary); 
+            background: rgba(37, 99, 235, 0.1); 
+        }
 
         /* --- HERO SECTION --- */
         .hero {
@@ -124,52 +149,60 @@
             display: flex; align-items: center; justify-content: center;
             padding: 8rem 5% 4rem;
             position: relative;
-            z-index: 1;
+            z-index: 10;
         }
 
         .hero-container {
             max-width: 1200px;
             width: 100%;
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 4rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
             align-items: center;
         }
 
         .tagline {
-            display: inline-block;
-            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-heading);
+            font-size: 0.75rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--accent-secondary);
+            letter-spacing: 2px;
+            color: var(--accent-glow);
             margin-bottom: 1.5rem;
-            padding: 6px 12px;
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            border-radius: 4px;
+            padding: 6px 16px;
+            background: rgba(139, 92, 246, 0.08);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 100px;
+        }
+        .tagline::before {
+            content: ''; width: 6px; height: 6px; background: var(--accent-glow); border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-glow);
         }
 
         h1 {
             font-family: var(--font-heading);
-            font-size: clamp(3.5rem, 6vw, 5rem);
+            font-size: clamp(3rem, 5.5vw, 4.5rem);
             line-height: 1.1;
             font-weight: 700;
             margin-bottom: 1.5rem;
-            letter-spacing: -2px;
+            letter-spacing: -0.04em;
         }
 
         .text-gradient {
-            background: linear-gradient(to right, #fff, #94a3b8);
+            background: linear-gradient(135deg, #fff 30%, #94a3b8 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero-desc {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin-bottom: 3rem;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
         }
 
         .btn-primary {
@@ -177,187 +210,213 @@
             padding: 1rem 2.5rem;
             background: white;
             color: black;
+            font-family: var(--font-heading);
             font-weight: 600;
-            border-radius: 30px;
+            border-radius: 100px;
             text-decoration: none;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            border: 1px solid white;
         }
         .btn-primary:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(255, 255, 255, 0.3);
+            background: transparent;
+            color: white;
         }
 
-        /* --- GLASS CARDS --- */
+        /* --- GLASS CARDS & COUNTDOWN --- */
         .glass-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            backdrop-filter: blur(12px);
-            border-radius: 24px;
-            padding: 2.5rem;
-            transition: all 0.4s ease;
-        }
-
-        .countdown-wrapper {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 3rem;
             position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
         }
-        /* Glow effect behind countdown */
-        .countdown-wrapper::before {
-            content: '';
-            position: absolute;
-            inset: -20px;
-            background: linear-gradient(45deg, var(--accent-primary), transparent, var(--accent-secondary));
-            filter: blur(40px);
-            opacity: 0.3;
-            z-index: -1;
+        
+        /* Shimmer effect inside card */
+        .glass-card::after {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
+            animation: shimmer 8s infinite;
         }
+        @keyframes shimmer { 0% { left: -100%; } 20% { left: 100%; } 100% { left: 100%; } }
 
         .countdown-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 1.5rem;
+            margin-top: 1rem;
         }
 
         .count-item {
-            text-align: center;
-            background: rgba(0,0,0,0.2);
-            padding: 1.5rem;
-            border-radius: 16px;
-            border: 1px solid rgba(255,255,255,0.05);
+            display: flex; flex-direction: column; align-items: center;
+            background: rgba(0,0,0,0.3);
+            padding: 1.5rem 1rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.03);
         }
 
         .count-number {
-            font-family: 'Space Grotesk', monospace;
-            font-size: 3rem;
-            font-weight: 700;
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 600;
             line-height: 1;
-            display: block;
             margin-bottom: 0.5rem;
-            font-variant-numeric: tabular-nums;
+            font-variant-numeric: tabular-nums; /* Evita que los números "bailen" */
+            letter-spacing: -0.05em;
         }
 
         .count-label {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             color: var(--text-muted);
+            font-weight: 600;
         }
 
-        /* --- FEATURES & INFO --- */
+        /* --- FEATURES SECTION --- */
         .info-section {
-            padding: 8rem 5%;
+            padding: 6rem 5%;
             position: relative;
-            z-index: 1;
+            z-index: 10;
         }
 
         .section-header {
             text-align: center;
-            max-width: 800px;
+            max-width: 700px;
             margin: 0 auto 5rem;
         }
         
         .section-header h2 {
             font-family: var(--font-heading);
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
+            letter-spacing: -0.03em;
+        }
+        
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
         }
 
         .grid-3 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .feature-card {
-            background: var(--card-bg);
+            background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);
             border: 1px solid var(--card-border);
             padding: 2.5rem;
-            border-radius: 20px;
-            transition: 0.3s;
+            border-radius: 24px;
+            transition: all 0.3s ease;
         }
         .feature-card:hover {
             border-color: var(--card-hover-border);
             transform: translateY(-5px);
-            background: rgba(255,255,255,0.05);
-        }
-        .feature-icon {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            display: inline-block;
-        }
-        .feature-card h3 {
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        .feature-card p {
-            color: var(--text-muted);
-            font-size: 1rem;
+            background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.01) 100%);
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
         }
 
-        /* --- FAQ --- */
+        .feature-icon {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            filter: drop-shadow(0 0 15px rgba(255,255,255,0.2));
+        }
+
+        .feature-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* --- FAQ REFACTORED --- */
         .faq-wrapper {
             max-width: 800px;
-            margin: 5rem auto 0;
+            margin: 8rem auto 0;
         }
 
         .faq-item {
             border-bottom: 1px solid var(--card-border);
-            margin-bottom: 1rem;
         }
+        .faq-item:first-child { border-top: 1px solid var(--card-border); }
 
         .faq-question {
             width: 100%;
             text-align: left;
             background: none;
             border: none;
-            color: white;
+            color: var(--text-main);
             padding: 1.5rem 0;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-family: var(--font-heading);
+            font-weight: 500;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: color 0.3s;
         }
         .faq-question:hover { color: var(--accent-secondary); }
 
         .faq-answer {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            color: var(--text-muted);
-            padding-right: 2rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            color: var(--text-secondary);
+            font-size: 1rem;
+            opacity: 0;
         }
+        
         .faq-item.active .faq-answer {
             max-height: 200px;
             padding-bottom: 1.5rem;
+            opacity: 1;
         }
-        .chevron { transition: 0.3s; }
-        .faq-item.active .chevron { transform: rotate(180deg); color: var(--accent-primary); }
+
+        .chevron { 
+            font-size: 0.8rem;
+            transition: transform 0.3s ease; 
+            color: var(--text-muted);
+        }
+        .faq-item.active .chevron { transform: rotate(180deg); color: var(--text-main); }
 
         /* --- FOOTER --- */
         footer {
             border-top: 1px solid var(--card-border);
-            padding: 3rem 5%;
+            padding: 4rem 5%;
             text-align: center;
             margin-top: 5rem;
-            position: relative;
-            z-index: 1;
             background: #030305;
         }
         .footer-logo {
-            font-weight: 700;
-            margin-bottom: 1rem;
-            display: inline-block;
             font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: white;
+            letter-spacing: -0.02em;
         }
 
         /* --- ANIMATIONS --- */
         .reveal-up {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(40px);
             transition: 0.8s cubic-bezier(0.2, 1, 0.3, 1);
         }
         .reveal-up.visible {
@@ -366,41 +425,41 @@
         }
 
         /* --- RESPONSIVE --- */
-        @media (max-width: 900px) {
-            .hero-container { grid-template-columns: 1fr; text-align: center; }
-            .hero-desc { margin: 0 auto 3rem; }
+        @media (max-width: 1024px) {
+            .hero-container { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
+            .hero-desc { margin: 0 auto 2.5rem; }
             .countdown-wrapper { max-width: 500px; margin: 0 auto; }
-            h1 { font-size: 3rem; }
+            .tagline { margin-top: 2rem; }
         }
         @media (max-width: 600px) {
-            .countdown-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+            h1 { font-size: 2.8rem; }
+            .glass-card { padding: 2rem 1.5rem; }
             .count-number { font-size: 2rem; }
-            .hero { padding-top: 6rem; }
         }
     </style>
 </head>
 <body>
 
     <div class="fixed-background">
+        <div class="noise-overlay"></div>
         <div class="grid-overlay"></div>
         <div class="orb orb-1"></div>
         <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
         <div class="spotlight" id="spotlight"></div>
     </div>
 
     <header>
         <div class="logo">
-            <div class="logo-box"><img src="distamuslogo.webp" alt="Logo" style="width: 35px; height: 35px; border-radius: 6px; margin-right: 10px;"></div>
+            <img src="distamuslogo.webp" alt="Logo" style="width: 32px; height: 32px; border-radius: 8px; object-fit: cover;">
             Distamus
         </div>
-        <a href="#info" class="cta-header">Info Evento</a>
+        <a href="#info" class="cta-header">Detalles</a>
     </header>
 
     <section class="hero">
         <div class="hero-container">
             <div class="hero-content reveal-up">
-                <span class="tagline">Evento Global 2026</span>
+                <div class="tagline">Evento Global 2026</div>
                 <h1>El futuro empieza<br><span class="text-gradient">el 4 de Julio.</span></h1>
                 <p class="hero-desc">
                     Distamus Day Update. Únete a nosotros para descubrir la próxima generación de tecnología, creatividad y comunidad.
@@ -409,8 +468,9 @@
             </div>
 
             <div class="hero-visual reveal-up" style="transition-delay: 0.2s;">
-                <div class="glass-card countdown-wrapper">
-                    <div style="text-align:center; margin-bottom: 20px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem; color: var(--accent-secondary);">Tiempo Restante</div>
+                <div class="glass-card">
+                    <div style="text-align:center; font-family: var(--font-heading); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 20px;">Lanzamiento Global</div>
+                    
                     <div class="countdown-grid">
                         <div class="count-item">
                             <span class="count-number" id="days">00</span>
@@ -429,10 +489,10 @@
                             <span class="count-label">Seg</span>
                         </div>
                     </div>
-                    <div style="margin-top: 25px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px;">
-                        <span style="font-size: 0.9rem; color: #fff;">4 Julio, 2026</span>
-                        <span style="color: var(--text-muted); margin: 0 10px;">•</span>
-                        <span style="font-size: 0.9rem; color: var(--text-muted);">16:00 CET</span>
+
+                    <div style="margin-top: 25px; text-align: center; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 20px; display: flex; justify-content: center; gap: 20px; font-size: 0.9rem; color: var(--text-muted);">
+                        <span>📅 4 Julio, 2026</span>
+                        <span>⌚ 16:00 CET</span>
                     </div>
                 </div>
             </div>
@@ -442,7 +502,7 @@
     <section id="info" class="info-section">
         <div class="section-header reveal-up">
             <h2>Innovación sin límites</h2>
-            <p style="color: var(--text-muted); font-size: 1.1rem;">Todo lo que hemos estado construyendo en secreto durante el último año.</p>
+            <p>Todo lo que hemos estado construyendo en secreto durante el último año.</p>
         </div>
 
         <div class="grid-3">
@@ -464,33 +524,45 @@
         </div>
 
         <div class="faq-wrapper reveal-up">
-            <h3 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 2rem;">Preguntas Frecuentes</h3>
+            <h3 style="font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 2.5rem; text-align: center;">Preguntas Frecuentes</h3>
             
             <div class="faq-item">
                 <button class="faq-question">
-                    ¿Será un evento presencial o virtual?
+                    ¿Qué es Distamus Day Update?
                     <span class="chevron">▼</span>
                 </button>
                 <div class="faq-answer">
-                    Es un evento híbrido. Podrás asistir en persona en Madrid o seguir el streaming en 4K desde cualquier parte del mundo.
+                    Distamus Day Update (DDU) es el evento anual oficial, celebrado cada 4 de julio, donde presentamos todas las novedades, productos y dirección futura del ecosistema.
                 </div>
             </div>
+
             <div class="faq-item">
                 <button class="faq-question">
                     ¿Es necesario registrarse?
                     <span class="chevron">▼</span>
                 </button>
                 <div class="faq-answer">
-                    Sí, el registro es gratuito pero necesario para obtener acceso al streaming exclusivo y a las betas que lanzaremos ese día.
+                    El streaming es abierto, pero el registro te da acceso a beneficios exclusivos, recordatorios y acceso anticipado a las betas que lanzaremos ese día.
                 </div>
             </div>
+
             <div class="faq-item">
                 <button class="faq-question">
-                    ¿Habrá grabación disponible?
+                    ¿Quedará grabado?
                     <span class="chevron">▼</span>
                 </button>
                 <div class="faq-answer">
-                    Todo el evento quedará grabado y se subirá a nuestro canal oficial y blog minutos después de finalizar.
+                    Sí. Minutos después de finalizar, la Keynote completa estará disponible en 4K en nuestro canal oficial y en esta misma página.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <button class="faq-question">
+                    ¿Cómo puedo participar?
+                    <span class="chevron">▼</span>
+                </button>
+                <div class="faq-answer">
+                    Durante el evento habilitaremos un chat en vivo y espacios en Discord para que la comunidad comente y reaccione en tiempo real.
                 </div>
             </div>
         </div>
@@ -498,7 +570,7 @@
 
     <footer>
         <div class="footer-logo">Distamus Inc.</div>
-        <p style="color: var(--text-muted); font-size: 0.9rem;">© 2026 Distamus Day Update. Diseñado para el futuro.</p>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">© 2026 Distamus Day Update. Diseñado para el futuro.</p>
     </footer>
 
     <script>
@@ -513,13 +585,16 @@
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Helper to add leading zeros
             const format = (num) => num < 10 ? `0${num}` : num;
 
-            document.getElementById('days').innerText = format(days);
-            document.getElementById('hours').innerText = format(hours);
-            document.getElementById('minutes').innerText = format(minutes);
-            document.getElementById('seconds').innerText = format(seconds);
+            if (distance > 0) {
+                document.getElementById('days').innerText = format(days);
+                document.getElementById('hours').innerText = format(hours);
+                document.getElementById('minutes').innerText = format(minutes);
+                document.getElementById('seconds').innerText = format(seconds);
+            } else {
+                document.getElementById('days').innerText = "00";
+            }
         }
         setInterval(updateCountdown, 1000);
         updateCountdown();
@@ -527,18 +602,17 @@
         // --- Spotlight Mouse Effect ---
         const spotlight = document.getElementById('spotlight');
         document.addEventListener('mousemove', (e) => {
-            // Smooth movement using requestAnimationFrame not strictly necessary for simple css translate but good practice
             spotlight.style.left = `${e.clientX}px`;
             spotlight.style.top = `${e.clientY}px`;
         });
 
-        // --- FAQ Logic ---
+        // --- FAQ Logic (Corregida) ---
         document.querySelectorAll('.faq-question').forEach(button => {
             button.addEventListener('click', () => {
                 const item = button.parentElement;
                 const isActive = item.classList.contains('active');
                 
-                // Close all others
+                // Cierra los demás si quieres comportamiento de acordeón estricto
                 document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
 
                 if (!isActive) {
@@ -547,7 +621,7 @@
             });
         });
 
-        // --- Scroll Animations (Intersection Observer) ---
+        // --- Scroll Animations ---
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
