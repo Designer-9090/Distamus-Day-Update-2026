@@ -12,23 +12,15 @@
     
     <style>
         :root {
-            /* Colores Base - Más profundos para contraste profesional */
+            /* Palette Dark Premium */
             --bg-color: #050507;
             --card-bg: rgba(255, 255, 255, 0.02);
             --card-border: rgba(255, 255, 255, 0.06);
-            --card-hover-border: rgba(255, 255, 255, 0.15);
-            
-            /* Acentos */
-            --accent-primary: #7c3aed;   /* Violeta intenso */
-            --accent-secondary: #2563eb; /* Azul corporativo */
-            --accent-glow: #8b5cf6;
-            
-            /* Textos */
+            --accent-primary: #7c3aed;   
+            --accent-secondary: #2563eb; 
             --text-main: #ffffff;
             --text-secondary: #cbd5e1;
             --text-muted: #64748b;
-            
-            /* Tipografías */
             --font-heading: 'Lexend', sans-serif;
             --font-body: 'Poppins', sans-serif;
         }
@@ -41,400 +33,160 @@
             font-family: var(--font-body);
             overflow-x: hidden;
             line-height: 1.7;
-            -webkit-font-smoothing: antialiased; /* Texto más nítido en Mac */
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* --- BACKGROUND SYSTEM --- */
+        /* --- BACKGROUND --- */
         .fixed-background {
-            position: fixed;
-            inset: 0;
-            z-index: -1;
-            overflow: hidden;
+            position: fixed; inset: 0; z-index: -1; overflow: hidden;
         }
-
-        /* Ruido (Noise) para textura profesional */
         .noise-overlay {
-            position: absolute;
-            inset: 0;
+            position: absolute; inset: 0; opacity: 0.4; pointer-events: none;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
-            opacity: 0.4;
-            pointer-events: none;
-            z-index: 1;
         }
-
-        .grid-overlay {
-            position: absolute;
-            inset: 0;
-            background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 60px 60px;
-            mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 100%);
-            -webkit-mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 100%);
-        }
-
         .orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.5;
+            position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.4;
             animation: floatOrb 25s infinite ease-in-out alternate;
         }
-        .orb-1 { width: 60vw; height: 60vw; background: var(--accent-primary); top: -20%; left: -10%; opacity: 0.2; }
-        .orb-2 { width: 50vw; height: 50vw; background: var(--accent-secondary); bottom: -10%; right: -20%; animation-delay: -5s; opacity: 0.15; }
+        .orb-1 { width: 60vw; height: 60vw; background: var(--accent-primary); top: -20%; left: -10%; opacity: 0.15; }
+        .orb-2 { width: 50vw; height: 50vw; background: var(--accent-secondary); bottom: -10%; right: -20%; animation-delay: -5s; opacity: 0.1; }
 
         @keyframes floatOrb {
             0% { transform: translate(0, 0); }
             100% { transform: translate(30px, 50px); }
         }
 
-        .spotlight {
-            position: fixed;
-            width: 800px; height: 800px;
-            background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 60%);
-            border-radius: 50%;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            z-index: 2;
-            transition: opacity 0.5s ease;
-        }
-
         /* --- HEADER --- */
         header {
-            position: fixed;
-            top: 0; width: 100%;
-            padding: 1.25rem 5%;
-            display: flex; justify-content: space-between; align-items: center;
-            z-index: 100;
-            background: rgba(5, 5, 7, 0.6);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            position: fixed; top: 0; width: 100%; padding: 1.25rem 5%;
+            display: flex; justify-content: space-between; align-items: center; z-index: 100;
+            background: rgba(5, 5, 7, 0.6); backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--card-border);
         }
-
         .logo {
-            font-family: var(--font-heading);
-            font-weight: 700;
-            font-size: 1.2rem;
-            letter-spacing: -0.03em;
-            display: flex; align-items: center; gap: 12px;
-            color: var(--text-main);
+            font-family: var(--font-heading); font-weight: 700; font-size: 1.2rem;
+            display: flex; align-items: center; gap: 12px; color: var(--text-main);
         }
-
-        .logo img {
-            transition: transform 0.3s ease;
-        }
-        .logo:hover img { transform: scale(1.05); }
-
         .cta-header {
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-            border: 1px solid var(--card-border);
-            padding: 8px 20px;
-            border-radius: 100px;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            background: rgba(255,255,255,0.01);
+            font-size: 0.85rem; font-weight: 500; color: var(--text-secondary);
+            border: 1px solid var(--card-border); padding: 8px 20px; border-radius: 100px;
+            text-decoration: none; transition: 0.3s;
         }
-        .cta-header:hover { 
-            color: white; 
-            border-color: var(--accent-secondary); 
-            background: rgba(37, 99, 235, 0.1); 
-        }
+        .cta-header:hover { background: rgba(255,255,255,0.05); color: white; }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO --- */
         .hero {
-            min-height: 100vh;
-            display: flex; align-items: center; justify-content: center;
-            padding: 8rem 5% 4rem;
-            position: relative;
-            z-index: 10;
+            min-height: 90vh; display: flex; align-items: center; justify-content: center;
+            padding: 8rem 5% 4rem; position: relative;
         }
-
         .hero-container {
-            max-width: 1200px;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: center;
+            max-width: 1200px; width: 100%; display: grid; grid-template-columns: 1fr 1fr;
+            gap: 5rem; align-items: center;
         }
-
         .tagline {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-family: var(--font-heading);
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent-glow);
-            margin-bottom: 1.5rem;
-            padding: 6px 16px;
-            background: rgba(139, 92, 246, 0.08);
-            border: 1px solid rgba(139, 92, 246, 0.2);
-            border-radius: 100px;
+            display: inline-block; font-family: var(--font-heading); font-size: 0.75rem;
+            font-weight: 600; text-transform: uppercase; letter-spacing: 2px;
+            color: var(--accent-secondary); margin-bottom: 1.5rem;
+            padding: 6px 12px; border: 1px solid rgba(37, 99, 235, 0.2); border-radius: 100px;
         }
-        .tagline::before {
-            content: ''; width: 6px; height: 6px; background: var(--accent-glow); border-radius: 50%;
-            box-shadow: 0 0 10px var(--accent-glow);
-        }
-
         h1 {
-            font-family: var(--font-heading);
-            font-size: clamp(3rem, 5.5vw, 4.5rem);
-            line-height: 1.1;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.04em;
+            font-family: var(--font-heading); font-size: clamp(3rem, 5.5vw, 4.5rem);
+            line-height: 1.1; font-weight: 700; margin-bottom: 1.5rem; letter-spacing: -0.04em;
         }
-
         .text-gradient {
             background: linear-gradient(135deg, #fff 30%, #94a3b8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-
         .hero-desc {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            max-width: 540px;
-            margin-bottom: 2.5rem;
-            font-weight: 300;
+            font-size: 1.1rem; color: var(--text-secondary); max-width: 540px; margin-bottom: 2.5rem; font-weight: 300;
         }
-
         .btn-primary {
-            display: inline-flex; align-items: center; justify-content: center;
-            padding: 1rem 2.5rem;
-            background: white;
-            color: black;
-            font-family: var(--font-heading);
-            font-weight: 600;
-            border-radius: 100px;
-            text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-            border: 1px solid white;
+            display: inline-flex; padding: 1rem 2.5rem; background: white; color: black;
+            font-family: var(--font-heading); font-weight: 600; border-radius: 100px; text-decoration: none;
+            transition: 0.3s;
         }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px -5px rgba(255, 255, 255, 0.3);
-            background: transparent;
-            color: white;
-        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(255,255,255,0.2); }
 
-        /* --- GLASS CARDS & COUNTDOWN --- */
+        /* --- CARDS & COUNTDOWN --- */
         .glass-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 30px;
-            padding: 3rem;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
+            background: var(--card-bg); border: 1px solid var(--card-border);
+            backdrop-filter: blur(20px); border-radius: 30px; padding: 3rem;
         }
-        
-        /* Shimmer effect inside card */
-        .glass-card::after {
-            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
-            animation: shimmer 8s infinite;
-        }
-        @keyframes shimmer { 0% { left: -100%; } 20% { left: 100%; } 100% { left: 100%; } }
-
-        .countdown-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-
+        .countdown-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1rem; }
         .count-item {
-            display: flex; flex-direction: column; align-items: center;
-            background: rgba(0,0,0,0.3);
-            padding: 1.5rem 1rem;
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.03);
+            text-align: center; background: rgba(0,0,0,0.3); padding: 1.5rem 1rem;
+            border-radius: 20px; border: 1px solid rgba(255,255,255,0.03);
         }
-
         .count-number {
-            font-family: var(--font-heading);
-            font-size: 2.5rem;
-            font-weight: 600;
-            line-height: 1;
-            margin-bottom: 0.5rem;
-            font-variant-numeric: tabular-nums; /* Evita que los números "bailen" */
-            letter-spacing: -0.05em;
+            font-family: var(--font-heading); font-size: 2.5rem; font-weight: 600; line-height: 1;
+            margin-bottom: 0.5rem; font-variant-numeric: tabular-nums;
         }
+        .count-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); }
 
-        .count-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--text-muted);
-            font-weight: 600;
-        }
-
-        /* --- FEATURES SECTION --- */
-        .info-section {
-            padding: 6rem 5%;
-            position: relative;
-            z-index: 10;
-        }
-
-        .section-header {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 5rem;
-        }
-        
-        .section-header h2 {
-            font-family: var(--font-heading);
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            letter-spacing: -0.03em;
-        }
-        
-        .section-header p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-        }
-
+        /* --- FEATURES --- */
         .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem; max-width: 1200px; margin: 4rem auto; padding: 0 5%;
         }
-
         .feature-card {
-            background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);
-            border: 1px solid var(--card-border);
-            padding: 2.5rem;
-            border-radius: 24px;
-            transition: all 0.3s ease;
+            background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, transparent 100%);
+            border: 1px solid var(--card-border); padding: 2.5rem; border-radius: 24px;
         }
-        .feature-card:hover {
-            border-color: var(--card-hover-border);
-            transform: translateY(-5px);
-            background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.01) 100%);
-            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
-        }
+        .feature-icon { font-size: 2rem; margin-bottom: 1rem; }
+        .feature-card h3 { font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 0.5rem; }
+        .feature-card p { color: var(--text-muted); font-size: 0.95rem; }
 
-        .feature-icon {
-            font-size: 2.2rem;
-            margin-bottom: 1.5rem;
-            display: inline-block;
-            filter: drop-shadow(0 0 15px rgba(255,255,255,0.2));
+        /* --- INFO / MANIFESTO SECTION (Tu código adaptado) --- */
+        .info-section {
+            padding: 8rem 5%; max-width: 900px; margin: 0 auto;
         }
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-header h2 { font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 1rem; }
+        .section-header p { color: var(--text-secondary); font-size: 1.2rem; }
 
-        .feature-card h3 {
-            font-family: var(--font-heading);
-            font-size: 1.4rem;
-            margin-bottom: 0.75rem;
-            font-weight: 600;
-        }
-
-        .feature-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* --- FAQ REFACTORED --- */
-        .faq-wrapper {
-            max-width: 800px;
-            margin: 8rem auto 0;
-        }
-
+        /* Estilos específicos para tu lista de FAQs estáticas */
         .faq-item {
             border-bottom: 1px solid var(--card-border);
+            padding: 2rem 0;
         }
-        .faq-item:first-child { border-top: 1px solid var(--card-border); }
-
+        .faq-item:last-child { border-bottom: none; }
+        
         .faq-question {
-            width: 100%;
-            text-align: left;
-            background: none;
-            border: none;
-            color: var(--text-main);
-            padding: 1.5rem 0;
-            font-size: 1.1rem;
-            font-family: var(--font-heading);
-            font-weight: 500;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: color 0.3s;
-        }
-        .faq-question:hover { color: var(--accent-secondary); }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            color: var(--text-secondary);
-            font-size: 1rem;
-            opacity: 0;
+            background: none; border: none; padding: 0; margin-bottom: 1rem;
+            color: var(--text-main); font-family: var(--font-heading);
+            font-size: 1.3rem; font-weight: 600; text-align: left; width: 100%;
+            pointer-events: none; /* Desactiva click */
         }
         
-        .faq-item.active .faq-answer {
-            max-height: 200px;
-            padding-bottom: 1.5rem;
-            opacity: 1;
+        .faq-answer {
+            color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8;
+            display: block; /* Siempre visible */
         }
 
-        .chevron { 
-            font-size: 0.8rem;
-            transition: transform 0.3s ease; 
-            color: var(--text-muted);
+        /* Resaltar las negritas */
+        .faq-answer strong {
+            color: var(--text-main);
+            font-weight: 600;
+            text-shadow: 0 0 20px rgba(124, 58, 237, 0.3); /* Glow sutil */
         }
-        .faq-item.active .chevron { transform: rotate(180deg); color: var(--text-main); }
 
         /* --- FOOTER --- */
         footer {
-            border-top: 1px solid var(--card-border);
-            padding: 4rem 5%;
-            text-align: center;
-            margin-top: 5rem;
-            background: #030305;
-        }
-        .footer-logo {
-            font-family: var(--font-heading);
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            color: white;
-            letter-spacing: -0.02em;
+            border-top: 1px solid var(--card-border); padding: 3rem 5%;
+            text-align: center; margin-top: 5rem;
         }
 
         /* --- ANIMATIONS --- */
         .reveal-up {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+            opacity: 0; transform: translateY(40px); transition: 0.8s cubic-bezier(0.2, 1, 0.3, 1);
         }
-        .reveal-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .reveal-up.visible { opacity: 1; transform: translateY(0); }
 
         /* --- RESPONSIVE --- */
-        @media (max-width: 1024px) {
+        @media (max-width: 900px) {
             .hero-container { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
             .hero-desc { margin: 0 auto 2.5rem; }
-            .countdown-wrapper { max-width: 500px; margin: 0 auto; }
-            .tagline { margin-top: 2rem; }
-        }
-        @media (max-width: 600px) {
-            h1 { font-size: 2.8rem; }
-            .glass-card { padding: 2rem 1.5rem; }
-            .count-number { font-size: 2rem; }
+            .countdown-wrapper { margin: 0 auto; }
         }
     </style>
 </head>
@@ -442,10 +194,8 @@
 
     <div class="fixed-background">
         <div class="noise-overlay"></div>
-        <div class="grid-overlay"></div>
         <div class="orb orb-1"></div>
         <div class="orb orb-2"></div>
-        <div class="spotlight" id="spotlight"></div>
     </div>
 
     <header>
@@ -453,175 +203,137 @@
             <img src="distamuslogo.webp" alt="Logo" style="width: 32px; height: 32px; border-radius: 8px; object-fit: cover;">
             Distamus
         </div>
-        <a href="#info" class="cta-header">Detalles</a>
+        <a href="#ddu-about" class="cta-header">Información</a>
     </header>
 
     <section class="hero">
         <div class="hero-container">
             <div class="hero-content reveal-up">
-                <div class="tagline">Evento Global 2026</div>
+                <div class="tagline">Evento 2026</div>
                 <h1>El futuro empieza<br><span class="text-gradient">el 4 de Julio.</span></h1>
                 <p class="hero-desc">
-                    Distamus Day Update. Únete a nosotros para descubrir la próxima generación de tecnología, creatividad y comunidad.
+                    Un evento único que celebra la innovación, la creatividad y el futuro. ¡Esperamos que os guste!
                 </p>
-                <a href="#info" class="btn-primary">Reservar sitio</a>
+                <a href="#ddu-about" class="btn-primary">Saber más</a>
             </div>
 
             <div class="hero-visual reveal-up" style="transition-delay: 0.2s;">
                 <div class="glass-card">
-                    <div style="text-align:center; font-family: var(--font-heading); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 20px;">Lanzamiento Global</div>
-                    
+                    <div style="text-align:center; font-family: var(--font-heading); letter-spacing: 2px; text-transform: uppercase; font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 20px; font-weight: 600;">Tiempo Restante</div>
                     <div class="countdown-grid">
-                        <div class="count-item">
-                            <span class="count-number" id="days">00</span>
-                            <span class="count-label">Días</span>
-                        </div>
-                        <div class="count-item">
-                            <span class="count-number" id="hours">00</span>
-                            <span class="count-label">Horas</span>
-                        </div>
-                        <div class="count-item">
-                            <span class="count-number" id="minutes">00</span>
-                            <span class="count-label">Min</span>
-                        </div>
-                        <div class="count-item">
-                            <span class="count-number" id="seconds">00</span>
-                            <span class="count-label">Seg</span>
-                        </div>
-                    </div>
-
-                    <div style="margin-top: 25px; text-align: center; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 20px; display: flex; justify-content: center; gap: 20px; font-size: 0.9rem; color: var(--text-muted);">
-                        <span>📅 4 Julio, 2026</span>
-                        <span>⌚ 16:00 CET</span>
+                        <div class="count-item"><span class="count-number" id="days">00</span><span class="count-label">Días</span></div>
+                        <div class="count-item"><span class="count-number" id="hours">00</span><span class="count-label">Horas</span></div>
+                        <div class="count-item"><span class="count-number" id="minutes">00</span><span class="count-label">Min</span></div>
+                        <div class="count-item"><span class="count-number" id="seconds">00</span><span class="count-label">Seg</span></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="info" class="info-section">
+    <div class="grid-3">
+        <div class="feature-card reveal-up">
+            <div class="feature-icon">✨</div>
+            <h3>Innovación</h3>
+            <p>Últimas novedades tecnológicas presentadas en directo.</p>
+        </div>
+        <div class="feature-card reveal-up" style="transition-delay: 0.1s;">
+            <div class="feature-icon">🎨</div>
+            <h3>Creatividad</h3>
+            <p>Experiencias diseñadas para inspirar a creadores.</p>
+        </div>
+        <div class="feature-card reveal-up" style="transition-delay: 0.2s;">
+            <div class="feature-icon">🌟</div>
+            <h3>Comunidad</h3>
+            <p>Un espacio donde conectar con desarrolladores globales.</p>
+        </div>
+    </div>
+
+    <section class="info-section" aria-labelledby="ddu-about">
         <div class="section-header reveal-up">
-            <h2>Innovación sin límites</h2>
-            <p>Todo lo que hemos estado construyendo en secreto durante el último año.</p>
+            <h2 id="ddu-about">Distamus Day Update</h2>
+            <p>El evento anual donde Distamus evoluciona.</p>
         </div>
 
-        <div class="grid-3">
-            <div class="feature-card reveal-up">
-                <div class="feature-icon">✨</div>
-                <h3>Next Gen UI</h3>
-                <p>Presentaremos la nueva interfaz visual que redefinirá la experiencia de usuario en todo el ecosistema.</p>
-            </div>
-            <div class="feature-card reveal-up" style="transition-delay: 0.1s;">
-                <div class="feature-icon">🚀</div>
-                <h3>Core Speed</h3>
-                <p>Nuevos motores de procesamiento que hacen que Distamus sea 4x más rápido que la versión anterior.</p>
-            </div>
-            <div class="feature-card reveal-up" style="transition-delay: 0.2s;">
-                <div class="feature-icon">🌐</div>
-                <h3>Comunidad Global</h3>
-                <p>Herramientas de conexión en tiempo real para creadores y desarrolladores de todo el mundo.</p>
-            </div>
-        </div>
-
-        <div class="faq-wrapper reveal-up">
-            <h3 style="font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 2.5rem; text-align: center;">Preguntas Frecuentes</h3>
-            
-            <div class="faq-item">
-                <button class="faq-question">
+        <div class="glass-card reveal-up">
+            <div class="faq-item active">
+                <button class="faq-question" style="cursor: default;">
                     ¿Qué es Distamus Day Update?
-                    <span class="chevron">▼</span>
                 </button>
                 <div class="faq-answer">
-                    Distamus Day Update (DDU) es el evento anual oficial, celebrado cada 4 de julio, donde presentamos todas las novedades, productos y dirección futura del ecosistema.
+                    <strong>Distamus Day Update (DDU)</strong> es un evento anual que se celebra cada
+                    <strong>4 de julio</strong>, concebido como el espacio oficial donde el equipo de
+                    Distamus presenta, mejora y consolida tanto productos existentes como nuevas
+                    iniciativas del ecosistema.
                 </div>
             </div>
 
-            <div class="faq-item">
-                <button class="faq-question">
-                    ¿Es necesario registrarse?
-                    <span class="chevron">▼</span>
+            <div class="faq-item active">
+                <button class="faq-question" style="cursor: default;">
+                    ¿Cuál es el propósito del evento?
                 </button>
                 <div class="faq-answer">
-                    El streaming es abierto, pero el registro te da acceso a beneficios exclusivos, recordatorios y acceso anticipado a las betas que lanzaremos ese día.
+                    DDU no es solo una actualización. Es una muestra de
+                    <strong>compromiso y fidelidad</strong> con la comunidad, una forma directa y
+                    transparente de compartir el estado real del proyecto, su evolución técnica
+                    y la dirección que tomará en el futuro.
                 </div>
             </div>
 
-            <div class="faq-item">
-                <button class="faq-question">
-                    ¿Quedará grabado?
-                    <span class="chevron">▼</span>
+            <div class="faq-item active">
+                <button class="faq-question" style="cursor: default;">
+                    ¿Cómo se puede experimentar Distamus Day Update?
                 </button>
                 <div class="faq-answer">
-                    Sí. Minutos después de finalizar, la Keynote completa estará disponible en 4K en nuestro canal oficial y en esta misma página.
+                    El evento está diseñado para ser accesible desde cualquier dispositivo.
+                    Queremos que <strong>Distamus Day Update sea el mejor lugar para todos</strong>,
+                    incluso cuando se vive desde una sola pantalla.
                 </div>
             </div>
-            
-            <div class="faq-item">
-                <button class="faq-question">
-                    ¿Cómo puedo participar?
-                    <span class="chevron">▼</span>
+
+            <div class="faq-item active">
+                <button class="faq-question" style="cursor: default;">
+                    ¿La fecha y el horario son fijos?
                 </button>
                 <div class="faq-answer">
-                    Durante el evento habilitaremos un chat en vivo y espacios en Discord para que la comunidad comente y reaccione en tiempo real.
+                    El horario del evento puede ajustarse en futuras ediciones si las circunstancias
+                    lo requieren. En ausencia de cambios relevantes, Distamus Day Update se celebrará
+                    conforme al calendario previsto cada <strong>4 de julio</strong>.
                 </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="footer-logo">Distamus Inc.</div>
+        <div class="logo" style="justify-content: center; margin-bottom: 1rem;">Distamus Inc.</div>
         <p style="color: var(--text-muted); font-size: 0.85rem;">© 2026 Distamus Day Update. Diseñado para el futuro.</p>
     </footer>
 
     <script>
-        // --- Countdown Logic ---
+        // Countdown
         function updateCountdown() {
             const eventDate = new Date('July 4, 2026 16:00:00').getTime();
             const now = new Date().getTime();
             const distance = eventDate - now;
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
             const format = (num) => num < 10 ? `0${num}` : num;
-
+            
             if (distance > 0) {
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
                 document.getElementById('days').innerText = format(days);
                 document.getElementById('hours').innerText = format(hours);
                 document.getElementById('minutes').innerText = format(minutes);
                 document.getElementById('seconds').innerText = format(seconds);
-            } else {
-                document.getElementById('days').innerText = "00";
             }
         }
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // --- Spotlight Mouse Effect ---
-        const spotlight = document.getElementById('spotlight');
-        document.addEventListener('mousemove', (e) => {
-            spotlight.style.left = `${e.clientX}px`;
-            spotlight.style.top = `${e.clientY}px`;
-        });
-
-        // --- FAQ Logic (Corregida) ---
-        document.querySelectorAll('.faq-question').forEach(button => {
-            button.addEventListener('click', () => {
-                const item = button.parentElement;
-                const isActive = item.classList.contains('active');
-                
-                // Cierra los demás si quieres comportamiento de acordeón estricto
-                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-
-                if (!isActive) {
-                    item.classList.add('active');
-                }
-            });
-        });
-
-        // --- Scroll Animations ---
+        // Reveal Animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
