@@ -6,6 +6,7 @@ export default defineConfig({
       input: {
         main: 'index.html',
         ddu2025: 'ddu2025.html',
+        ddu2026: 'ddu2026.html',
       },
     },
   },
