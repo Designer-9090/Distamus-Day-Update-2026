@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distamus Day Update 2026 — Próximamente</title>
+    <link rel="icon" type="image/webp" href="distamuslogo.webp">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #060608;
+            --accent: #e8ff47;
+            --accent-dim: rgba(232, 255, 71, 0.08);
+            --accent-glow: rgba(232, 255, 71, 0.25);
+            --text: #f0f0e8;
+            --text-muted: #4a4a44;
+            --border: rgba(255, 255, 255, 0.06);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { height: 100%; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Grid background */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(232, 255, 71, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(232, 255, 71, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Glow center */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(232, 255, 71, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* HEADER */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            padding: 1.2rem 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 10;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            text-decoration: none;
+        }
+
+        .logo img {
+            width: 26px;
+            height: 26px;
+            border-radius: 6px;
+            object-fit: cover;
+        }
+
+        .logo span {
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text);
+            letter-spacing: -0.01em;
+        }
+
+        .header-link {
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-decoration: none;
+            border: 1px solid var(--border);
+            padding: 6px 14px;
+            border-radius: 3px;
+            letter-spacing: 0.04em;
+            transition: all 0.2s;
+        }
+
+        .header-link:hover {
+            color: var(--text);
+            border-color: rgba(255,255,255,0.15);
+        }
+
+        /* MAIN */
+        main {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* WIP badge */
+        .wip-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            border: 1px solid rgba(232, 255, 71, 0.3);
+            background: var(--accent-dim);
+            padding: 6px 14px;
+            border-radius: 3px;
+            margin-bottom: 2rem;
+            animation: fadeDown 0.6s ease both;
+        }
+
+        .wip-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            animation: blink 1.2s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.2; }
+        }
+
+        /* TRABAJANDO */
+        .main-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(5rem, 18vw, 14rem);
+            line-height: 0.9;
+            letter-spacing: 0.02em;
+            color: var(--text);
+            margin-bottom: 1rem;
+            animation: fadeUp 0.7s cubic-bezier(0.2, 1, 0.3, 1) 0.1s both;
+        }
+
+        .main-title .highlight {
+            color: var(--accent);
+            text-shadow: 0 0 60px var(--accent-glow), 0 0 120px rgba(232, 255, 71, 0.1);
+        }
+
+        /* Subtitle */
+        .subtitle {
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--text-muted);
+            letter-spacing: 0.04em;
+            margin-bottom: 3.5rem;
+            animation: fadeUp 0.7s cubic-bezier(0.2, 1, 0.3, 1) 0.2s both;
+        }
+
+        .subtitle strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        /* FALTAN label */
+        .faltan-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            animation: fadeUp 0.7s cubic-bezier(0.2, 1, 0.3, 1) 0.3s both;
+        }
+
+        /* COUNTDOWN */
+        .countdown {
+            display: flex;
+            align-items: flex-start;
+            animation: fadeUp 0.7s cubic-bezier(0.2, 1, 0.3, 1) 0.35s both;
+        }
+
+        .count-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 1.5rem;
+            position: relative;
+        }
+
+        .count-block:not(:last-child)::after {
+            content: ':';
+            position: absolute;
+            right: -4px;
+            top: 8px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            color: var(--text-muted);
+            line-height: 1;
+        }
+
+        .count-num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: 1;
+            color: var(--text);
+            font-variant-numeric: tabular-nums;
+            min-width: 2ch;
+            text-align: center;
+            transition: color 0.15s;
+        }
+
+        .count-num.tick { color: var(--accent); }
+
+        .count-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-top: 0.4rem;
+        }
+
+        /* Progress bar */
+        .progress-wrap {
+            width: min(500px, 90vw);
+            margin-top: 3rem;
+            animation: fadeUp 0.7s cubic-bezier(0.2, 1, 0.3, 1) 0.45s both;
+        }
+
+        .progress-meta {
+            display: flex;
+            justify-content: space-between;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 0.6rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 2px;
+            background: var(--border);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 2px;
+            box-shadow: 0 0 8px var(--accent-glow);
+            transition: width 1s ease;
+        }
+
+        /* Footer */
+        footer {
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            padding: 1.2rem 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid var(--border);
+            z-index: 10;
+        }
+
+        .footer-copy {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+        }
+
+        .footer-date {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            .count-block { padding: 0 0.8rem; }
+            body { overflow: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">
+            <img src="distamuslogo.webp" alt="Logo Distamus">
+            <span>Distamus</span>
+        </a>
+        <a href="ddu2025.html" class="header-link">← DDU 2025</a>
+    </header>
+
+    <main>
+        <div class="wip-badge">
+            <span class="wip-dot"></span>
+            En construcción
+        </div>
+
+        <h1 class="main-title">
+            TRABA<span class="highlight">JANDO</span>
+        </h1>
+
+        <p class="subtitle">Esperá hasta el <strong>4 de Julio</strong> — DDU 2026 está en camino.</p>
+
+        <div class="faltan-label">Faltan</div>
+
+        <div class="countdown">
+            <div class="count-block">
+                <span class="count-num" id="cd-days">000</span>
+                <span class="count-label">Días</span>
+            </div>
+            <div class="count-block">
+                <span class="count-num" id="cd-hours">00</span>
+                <span class="count-label">Horas</span>
+            </div>
+            <div class="count-block">
+                <span class="count-num" id="cd-minutes">00</span>
+                <span class="count-label">Min</span>
+            </div>
+            <div class="count-block">
+                <span class="count-num" id="cd-seconds">00</span>
+                <span class="count-label">Seg</span>
+            </div>
+        </div>
+
+        <div class="progress-wrap">
+            <div class="progress-meta">
+                <span>DDU 2025</span>
+                <span id="progress-pct">0%</span>
+                <span>DDU 2026</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <span class="footer-copy">© Distamus Day Update 2026</span>
+        <span class="footer-date">04 · 07 · 2026</span>
+    </footer>
+
+    <script>
+        const TARGET = new Date('2026-07-04T00:00:00').getTime();
+        const START  = new Date('2025-07-04T00:00:00').getTime();
+        const total  = TARGET - START;
+
+        const pad = (n, len = 2) => String(n).padStart(len, '0');
+        let prevSec = -1;
+
+        function tick() {
+            const now  = Date.now();
+            const diff = TARGET - now;
+
+            if (diff <= 0) {
+                ['cd-days','cd-hours','cd-minutes','cd-seconds'].forEach(id => {
+                    document.getElementById(id).textContent = '00';
+                });
+                document.getElementById('cd-days').textContent = '000';
+                document.getElementById('progress-fill').style.width = '100%';
+                document.getElementById('progress-pct').textContent = '100%';
+                return;
+            }
+
+            const days    = Math.floor(diff / 86400000);
+            const hours   = Math.floor((diff % 86400000) / 3600000);
+            const minutes = Math.floor((diff % 3600000)  / 60000);
+            const seconds = Math.floor((diff % 60000)    / 1000);
+
+            document.getElementById('cd-days').textContent    = pad(days, 3);
+            document.getElementById('cd-hours').textContent   = pad(hours);
+            document.getElementById('cd-minutes').textContent = pad(minutes);
+
+            const secEl = document.getElementById('cd-seconds');
+            if (seconds !== prevSec) {
+                secEl.classList.remove('tick');
+                void secEl.offsetWidth;
+                secEl.textContent = pad(seconds);
+                secEl.classList.add('tick');
+                setTimeout(() => secEl.classList.remove('tick'), 150);
+                prevSec = seconds;
+            }
+
+            const elapsed = now - START;
+            const pct = Math.min(100, Math.max(0, (elapsed / total) * 100));
+            document.getElementById('progress-fill').style.width = pct.toFixed(2) + '%';
+            document.getElementById('progress-pct').textContent = pct.toFixed(1) + '%';
+        }
+
+        tick();
+        setInterval(tick, 1000);
+    </script>
+
+</body>
+</html>
