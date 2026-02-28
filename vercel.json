@@ -1,7 +1,8 @@
 {
   "rewrites": [
     { "source": "/ddu2025", "destination": "/ddu2025.html" },
-    { "source": "/ddu2026", "destination": "/index.html" }
+    { "source": "/inicio", "destination": "/index.html" },
+    { "source": "/ddu2026", "destination": "/ddu2026.html" }
   ],
   "cleanUrls": true
 }
