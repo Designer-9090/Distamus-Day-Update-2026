@@ -15,6 +15,7 @@ class DistamusHeader extends HTMLElement {
           <a href="ddu2025.html" class="mobile-only-btn">← DDU 2025</a>
         </nav>
         <div class="header-actions">
+          <span class="header-badge-terminal">SYS::DDU-2026 // ONLINE</span>
           <a href="ddu2025.html" class="header-btn">← DDU 2025</a>
           <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle Menu">
             <span></span>

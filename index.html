@@ -233,6 +233,32 @@
         });
 
         document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
-    </script>
+
+        // Terminal status bar clock
+        function updateTermClock() {
+            const el = document.getElementById('termTime');
+            if (el) {
+                const now = new Date();
+                const hh = String(now.getUTCHours()).padStart(2, '0');
+                const mm = String(now.getUTCMinutes()).padStart(2, '0');
+                const ss = String(now.getUTCSeconds()).padStart(2, '0');
+                el.textContent = `UTC ${hh}:${mm}:${ss}`;
+            }
+        }
+        setInterval(updateTermClock, 1000);
+        updateTermClock();
+    </script>    <!-- Terminal Status Bar — visible on all pages -->
+    <div class="terminal-statusbar" aria-hidden="true">
+        <div class="sb-left">
+            <span><span class="sb-dot"></span>DDU-PORTAL::ACTIVO</span>
+            <span>NODO: DISTAMUS-CORE-01</span>
+            <span>PROTOCOLO: ENCRIPTADO</span>
+        </div>
+        <div class="sb-right">
+            <span class="sb-warn">⚠ EVENTO: 10.07.2026 // 16:00 UTC</span>
+            <span id="termTime"></span>
+        </div>
+    </div>
+
 </body>
 </html>

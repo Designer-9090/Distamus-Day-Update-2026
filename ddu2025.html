@@ -361,6 +361,34 @@
         });
 
         document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
+
+        // Terminal status bar clock
+        function updateTermClock() {
+            const el = document.getElementById('termTime');
+            if (el) {
+                const now = new Date();
+                const hh = String(now.getUTCHours()).padStart(2, '0');
+                const mm = String(now.getUTCMinutes()).padStart(2, '0');
+                const ss = String(now.getUTCSeconds()).padStart(2, '0');
+                el.textContent = `UTC ${hh}:${mm}:${ss}`;
+            }
+        }
+        setInterval(updateTermClock, 1000);
+        updateTermClock();
     </script>
+
+    <!-- Terminal Status Bar -->
+    <div class="terminal-statusbar" aria-hidden="true" style="border-top-color: rgba(200, 169, 110, 0.2); color: rgba(200, 169, 110, 0.45);">
+        <div class="sb-left">
+            <span><span class="sb-dot" style="background:#c8a96e; box-shadow: 0 0 6px #c8a96e;"></span>ARCHIVO::DDU-2025</span>
+            <span>ESTADO: HISTÓRICO</span>
+            <span>ACCESO: LECTURA</span>
+        </div>
+        <div class="sb-right">
+            <span style="color: rgba(200, 169, 110, 0.45);">DU-2025 // PRIMERA EDICIÓN DISTAMUS</span>
+            <span id="termTime"></span>
+        </div>
+    </div>
+
 </body>
 </html>

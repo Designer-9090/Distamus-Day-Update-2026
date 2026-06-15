@@ -1,4 +1,65 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;600;700&display=swap');
+
+/* ==========================================
+   GLOBAL TERMINAL / CRT OVERLAY SYSTEM
+   Applied across all pages via body pseudo-elements
+   ========================================== */
+
+/* CRT Scanlines — rendered as a subtle fixed overlay on every page */
+body::before {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.07) 2px,
+    rgba(0, 0, 0, 0.07) 4px
+  );
+  z-index: 9000;
+  pointer-events: none;
+  animation: crtFlicker 8s infinite;
+}
+
+/* Subtle RGB fringe / phosphor glare */
+body::after {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.015),
+    rgba(0, 255, 0, 0.008),
+    rgba(0, 0, 255, 0.015)
+  );
+  z-index: 8999;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+@keyframes crtFlicker {
+  0%   { opacity: 1; }
+  92%  { opacity: 1; }
+  93%  { opacity: 0.92; }
+  94%  { opacity: 1; }
+  96%  { opacity: 0.96; }
+  100% { opacity: 1; }
+}
+
+/* Terminal blink cursor keyframe — used by badge-official and section-tag */
+@keyframes termCursorBlink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* Terminal phosphor glow on accent text */
+@keyframes termGlow {
+  0%   { text-shadow: 0 0 4px rgba(0, 222, 203, 0.3); }
+  100% { text-shadow: 0 0 12px rgba(0, 222, 203, 0.7), 0 0 25px rgba(0, 222, 203, 0.2); }
+}
 
 :root {
   --bg-color: #030014;
@@ -989,5 +1050,136 @@ body {
   
   .countdown-box {
     padding: 1.25rem 0.25rem;
+  }
+}
+
+/* ==========================================
+   TERMINAL UI OVERRIDES
+   Layered on top without breaking existing design
+   ========================================== */
+
+/* Monospace font on badge-official — system status chip feel */
+.badge-official {
+  font-family: 'Fira Code', monospace !important;
+  letter-spacing: 1px;
+}
+
+/* Blinking cursor appended after section-tag */
+.section-tag {
+  font-family: 'Fira Code', monospace !important;
+  letter-spacing: 1.5px;
+}
+
+.section-tag::after {
+  content: '_';
+  display: inline-block;
+  margin-left: 2px;
+  animation: termCursorBlink 1s step-end infinite;
+  color: var(--accent-cyan);
+}
+
+/* Countdown — monospace tabular digits with phosphor glow */
+.countdown-num {
+  font-family: 'Fira Code', monospace !important;
+  letter-spacing: -1px;
+  filter: drop-shadow(0 0 6px rgba(0, 222, 203, 0.25));
+}
+
+.countdown-label {
+  font-family: 'Fira Code', monospace !important;
+}
+
+/* Section header phosphor glow */
+.section-header h2 {
+  filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.18));
+}
+
+/* expect-num terminal pill */
+.expect-num {
+  font-family: 'Fira Code', monospace !important;
+  font-size: 0.8rem !important;
+}
+
+/* Footer badge terminal chip */
+.footer-badge {
+  font-family: 'Fira Code', monospace !important;
+}
+
+/* Secret badge terminal chip */
+.secret-badge {
+  font-family: 'Fira Code', monospace !important;
+}
+
+/* ==========================================
+   TERMINAL STATUS BAR — fixed bottom strip on all pages
+   ========================================== */
+.terminal-statusbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 26px;
+  background: rgba(3, 0, 20, 0.95);
+  border-top: 1px solid rgba(0, 222, 203, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.62rem;
+  color: rgba(0, 222, 203, 0.45);
+  z-index: 9001;
+  backdrop-filter: blur(10px);
+  pointer-events: none;
+  letter-spacing: 0.5px;
+}
+
+.terminal-statusbar .sb-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.terminal-statusbar .sb-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.terminal-statusbar .sb-dot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  background: #00ff66;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #00ff66;
+  animation: termCursorBlink 2s ease-in-out infinite;
+  margin-right: 5px;
+  flex-shrink: 0;
+}
+
+.terminal-statusbar .sb-warn {
+  color: rgba(255, 204, 0, 0.45);
+}
+
+/* Header terminal version badge */
+.header-badge-terminal {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.58rem;
+  color: rgba(0, 222, 203, 0.4);
+  border: 1px solid rgba(0, 222, 203, 0.12);
+  padding: 2px 8px;
+  border-radius: 3px;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .header-badge-terminal {
+    display: inline-block;
+  }
+  body {
+    padding-bottom: 26px;
   }
 }

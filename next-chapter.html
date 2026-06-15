@@ -166,6 +166,33 @@
                 blogLink.style.color = 'var(--text-light)';
             }
         });
+
+        // Terminal status bar clock
+        function updateTermClock() {
+            const el = document.getElementById('termTime');
+            if (el) {
+                const now = new Date();
+                const hh = String(now.getUTCHours()).padStart(2, '0');
+                const mm = String(now.getUTCMinutes()).padStart(2, '0');
+                const ss = String(now.getUTCSeconds()).padStart(2, '0');
+                el.textContent = `UTC ${hh}:${mm}:${ss}`;
+            }
+        }
+        setInterval(updateTermClock, 1000);
+        updateTermClock();
     </script>
+    <!-- Terminal Status Bar -->
+    <div class="terminal-statusbar" aria-hidden="true">
+        <div class="sb-left">
+            <span><span class="sb-dot"></span>DDU-BLOGS::ACTIVO</span>
+            <span>SECCIÓN: NEXT-CHAPTER</span>
+            <span>ACCESO: PÚBLICO</span>
+        </div>
+        <div class="sb-right">
+            <span class="sb-warn">⚠ EVENTO: 10.07.2026 // 16:00 UTC</span>
+            <span id="termTime"></span>
+        </div>
+    </div>
+
 </body>
 </html>
