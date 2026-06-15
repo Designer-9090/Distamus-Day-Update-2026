@@ -3,585 +3,364 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Distamus Day Update 2025 — Archivo Histórico</title>
+    <title>Distamus Update 2025 (DU 2025) — Archivo Histórico</title>
+    <meta name="description" content="DDU 2025 (Distamus Update 2025) - Bienvenidos a la primera edición de Distamus Update 2025. Conoce los detalles de esta edición histórica.">
     <link rel="icon" type="image/webp" href="distamuslogo.webp">
-
+    
+    <!-- Google Fonts for historical Syne/DM Sans combination -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    
+    <!-- Global Styles -->
+    <link rel="stylesheet" href="/src/index.css">
+    
+    <!-- Custom Gold/Amber styling overrides for the historical theme -->
     <style>
-        :root {
-            --bg: #0a0a0c;
-            --bg-card: #111114;
-            --bg-card-hover: #161619;
-            --border: rgba(255, 255, 255, 0.07);
-            --border-light: rgba(255, 255, 255, 0.04);
-            --accent: #c8a96e;
-            --accent-dim: rgba(200, 169, 110, 0.15);
-            --accent-glow: rgba(200, 169, 110, 0.06);
-            --text: #e8e8e0;
-            --text-secondary: #8a8a80;
-            --text-muted: #4a4a46;
-            --red: #c0392b;
-            --red-dim: rgba(192, 57, 43, 0.12);
-            --font-display: 'Syne', sans-serif;
-            --font-body: 'DM Sans', sans-serif;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: var(--font-body);
-            font-size: 16px;
-            line-height: 1.75;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-        }
-
-        /* Subtle noise texture */
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            z-index: 0;
-            pointer-events: none;
-            opacity: 0.025;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-        }
-
-        /* HEADER */
-        header {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 100;
-            padding: 1.2rem 5%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: rgba(10, 10, 12, 0.85);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .header-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-
-        .header-logo img {
-            width: 28px;
-            height: 28px;
-            border-radius: 6px;
-            object-fit: cover;
-        }
-
-        .header-logo span {
-            font-family: var(--font-display);
-            font-weight: 700;
-            font-size: 1rem;
-            color: var(--text);
-            letter-spacing: -0.01em;
-        }
-
-        .header-event {
-            font-family: var(--font-display);
-            font-size: 0.78rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        .header-right a {
-            font-family: var(--font-body);
-            font-size: 0.82rem;
-            font-weight: 500;
-            color: var(--accent);
-            text-decoration: none;
-            border: 1px solid rgba(200, 169, 110, 0.3);
-            padding: 7px 18px;
-            border-radius: 4px;
-            letter-spacing: 0.02em;
-            transition: all 0.25s;
-        }
-
-        .header-right a:hover {
-            background: var(--accent-dim);
-            border-color: var(--accent);
-        }
-
-        /* HERO */
-        .hero {
-            padding: 12rem 5% 7rem;
-            max-width: 1000px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .archive-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            font-family: var(--font-body);
-            font-size: 0.72rem;
-            font-weight: 500;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            border: 1px solid var(--border);
-            padding: 5px 12px;
-            border-radius: 3px;
-            margin-bottom: 2.5rem;
-        }
-
-        .archive-badge::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--text-muted);
-        }
-
-        .hero h1 {
-            font-family: var(--font-display);
-            font-size: clamp(2.8rem, 6vw, 5rem);
-            font-weight: 800;
-            line-height: 1.05;
-            letter-spacing: -0.04em;
-            color: var(--text);
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-subtitle {
-            font-size: 1.05rem;
-            color: var(--text-secondary);
-            font-weight: 300;
-            max-width: 560px;
-            margin-bottom: 0.75rem;
-        }
-
-        .hero-note {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            letter-spacing: 0.05em;
-        }
-
-        .hero-divider {
-            width: 100%;
-            height: 1px;
-            background: var(--border);
-            margin-top: 4rem;
-        }
-
-        /* SECTIONS */
-        .section {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 5rem 5%;
-        }
-
-        .section-title {
-            font-family: var(--font-display);
-            font-size: 0.72rem;
-            font-weight: 600;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 3rem;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .section-title::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--border);
-        }
-
-        /* INTRO */
-        .intro-block {
-            border-left: 2px solid var(--accent);
-            padding: 2.5rem 2.5rem;
-            background: var(--bg-card);
-            border-radius: 0 8px 8px 0;
-        }
-
-        .intro-block h2 {
-            font-family: var(--font-display);
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            margin-bottom: 1.25rem;
-            color: var(--text);
-        }
-
-        .intro-block p {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            font-weight: 300;
-            max-width: 680px;
-        }
-
-        .intro-block p + p {
-            margin-top: 0.9rem;
-        }
-
-        /* SERVICES GRID */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-            gap: 1.5px;
-            background: var(--border);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .service-card {
-            background: var(--bg-card);
-            padding: 2.25rem 2rem;
-            position: relative;
-            transition: background 0.2s;
-        }
-
-        .service-card:hover {
-            background: var(--bg-card-hover);
-        }
-
-        .service-card.rip {
-            border-left: 3px solid var(--red);
-        }
-
-        .service-card.rip .service-tag {
-            color: var(--red);
-            border-color: rgba(192, 57, 43, 0.3);
-            background: var(--red-dim);
-        }
-
-        .service-tag {
-            display: inline-block;
-            font-size: 0.68rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--accent);
-            border: 1px solid rgba(200, 169, 110, 0.25);
-            background: var(--accent-glow);
-            padding: 3px 8px;
-            border-radius: 3px;
-            margin-bottom: 1rem;
-        }
-
-        .service-card h3 {
-            font-family: var(--font-display);
-            font-size: 1.25rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            color: var(--text);
-            margin-bottom: 0.4rem;
-        }
-
-        .service-subtitle {
-            font-size: 0.82rem;
-            color: var(--text-muted);
-            font-weight: 400;
-            margin-bottom: 1.25rem;
-            font-style: italic;
-        }
-
-        .service-card p,
-        .service-card ul {
-            font-size: 0.92rem;
-            color: var(--text-secondary);
-            font-weight: 300;
-            line-height: 1.7;
-        }
-
-        .service-card ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .service-card ul li {
-            padding: 0.3rem 0;
-            padding-left: 1.1rem;
-            position: relative;
-        }
-
-        .service-card ul li::before {
-            content: '—';
-            position: absolute;
-            left: 0;
-            color: var(--text-muted);
-            font-size: 0.7rem;
-        }
-
-        .service-card p + p {
-            margin-top: 0.75rem;
-        }
-
-        .service-card .note {
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border-light);
-            font-size: 0.82rem;
-            color: var(--text-muted);
-            font-style: italic;
-        }
-
-        /* REVEAL ANIMATIONS */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* FOOTER */
-        footer {
-            margin-top: 6rem;
-            border-top: 1px solid var(--border);
-            padding: 3rem 5%;
-        }
-
-        .footer-inner {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-        }
-
-        .footer-left {
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-        }
-
-        .footer-label {
-            font-size: 0.72rem;
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-        }
-
-        .footer-event {
-            font-family: var(--font-display);
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: var(--text);
-        }
-
-        .footer-copy {
-            font-size: 0.78rem;
-            color: var(--text-muted);
-        }
-
-        .footer-link {
-            font-family: var(--font-body);
-            font-size: 0.82rem;
-            font-weight: 500;
-            color: var(--accent);
-            text-decoration: none;
-            border: 1px solid rgba(200, 169, 110, 0.3);
-            padding: 8px 20px;
-            border-radius: 4px;
-            transition: all 0.25s;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .footer-link:hover {
-            background: var(--accent-dim);
-            border-color: var(--accent);
-        }
-
-        .footer-link::after {
-            content: '→';
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 700px) {
-            .header-event { display: none; }
-            .hero h1 { font-size: 2.6rem; }
-            .services-grid { grid-template-columns: 1fr; }
-            .footer-inner { flex-direction: column; align-items: flex-start; }
-        }
+      :root {
+        --bg-color: #06050b;
+        --bg-darker: #020104;
+        --text-light: #ffffff;
+        --text-secondary: #e6dfcf;
+        --text-muted: #948e82;
+        --accent-purple: #c8a96e; /* Historical Gold */
+        --accent-cyan: #e5c184; /* Amber Accent */
+        --accent-glow-purple: rgba(200, 169, 110, 0.2);
+        --accent-glow-cyan: rgba(229, 193, 132, 0.2);
+        --gradient-primary: linear-gradient(135deg, #c8a96e 0%, #ebdcb9 100%);
+        --gradient-glow: linear-gradient(135deg, rgba(200, 169, 110, 0.4) 0%, rgba(229, 193, 132, 0.4) 100%);
+        --gradient-dark: linear-gradient(180deg, #06050b 0%, #020104 100%);
+        
+        --font-heading: 'Syne', sans-serif;
+        --font-body: 'DM Sans', sans-serif;
+      }
+      
+      .archive-hero {
+        min-height: 75vh;
+        padding-top: 120px;
+        padding-bottom: 4rem;
+        display: flex;
+        align-items: center;
+      }
+      
+      .badge-archive {
+        color: var(--accent-cyan);
+        background: rgba(229, 193, 132, 0.08);
+        border: 1px solid rgba(229, 193, 132, 0.2);
+      }
+      
+      .badge-archive::before {
+        background-color: var(--accent-cyan);
+        box-shadow: 0 0 8px var(--accent-cyan);
+      }
+      
+      .rip-card::before {
+        background: linear-gradient(135deg, #ef4444 0%, #991b1b 100%) !important;
+      }
+      
+      .rip-tag {
+        color: #ef4444 !important;
+        background: rgba(239, 68, 68, 0.08) !important;
+        border: 1px solid rgba(239, 68, 68, 0.2) !important;
+      }
+      
+      .list-bullets {
+        list-style: none;
+        margin-top: 1rem;
+        padding-left: 0;
+      }
+      
+      .list-bullets li {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: 0.75rem;
+        font-size: 0.92rem;
+        color: var(--text-secondary);
+      }
+      
+      .list-bullets li::before {
+        content: "—";
+        position: absolute;
+        left: 0;
+        color: var(--accent-purple);
+      }
+      
+      .tech-innovations {
+        margin-top: 1.25rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        padding-top: 1rem;
+      }
+      
+      .tech-innovations h5 {
+        font-family: var(--font-heading);
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--text-light);
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      
+      /* Subtle adjustments for dynamic elements */
+      .glow-orb.orb-purple {
+        background: var(--accent-purple);
+      }
+      .glow-orb.orb-cyan {
+        background: var(--accent-cyan);
+      }
     </style>
+    
+    <!-- Scripts for Decoupled Components -->
+    <script type="module" src="/src/components/Header.js"></script>
+    <script type="module" src="/src/components/Footer.js"></script>
 </head>
 <body>
 
-    <header>
-        <a href="#" class="header-logo">
-            <img src="distamuslogo.webp" alt="Logo Distamus">
-            <span>Distamus</span>
-        </a>
-        <span class="header-event">Distamus Day Update 2025</span>
-        <div class="header-right" style="display: flex; gap: 10px; align-items: center;">
-            <a href="index.html" style="font-family: var(--font-body); font-size: 0.82rem; font-weight: 500; color: var(--text-secondary); text-decoration: none; border: 1px solid var(--border); padding: 7px 18px; border-radius: 4px; transition: all 0.25s;" onmouseover="this.style.color='var(--text)';this.style.borderColor='rgba(255,255,255,0.15)'" onmouseout="this.style.color='';this.style.borderColor=''">Inicio</a>
-            <a href="ddu2026.html">Ir a DDU 2026</a>
-        </div>
-    </header>
+    <!-- Ambient Space Background -->
+    <div class="bg-ambient" aria-hidden="true">
+        <div class="noise-overlay"></div>
+        <div class="glow-orb orb-purple"></div>
+        <div class="glow-orb orb-cyan"></div>
+        <div class="glow-orb orb-center"></div>
+    </div>
 
-    <!-- HERO -->
-    <section class="hero">
-        <div class="archive-badge">Archivo histórico oficial</div>
-        <h1>Distamus Day<br>Update 2025</h1>
-        <p class="hero-subtitle">Primera edición oficial del evento Distamus Day Update</p>
-        <p class="hero-note">Archivo histórico oficial</p>
-        <div class="hero-divider"></div>
-    </section>
+    <!-- Decoupled Header component -->
+    <distamus-header></distamus-header>
 
-    <!-- INTRODUCCIÓN -->
-    <section class="section fade-in">
-        <div class="section-title">Introducción</div>
-        <div class="intro-block">
-            <h2>Distamus Day Update 2025 (DDU 2025)</h2>
-            <p>Bienvenidos a la primera edición de Distamus Day Update.</p>
-            <p>DDU 2025 no es solo una actualización más. Esta primera edición marca un antes y un después en la historia de Distamus, donde la transparencia y la ambición se unen para mostrar la evolución completa del ecosistema.</p>
-        </div>
-    </section>
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero archive-hero" id="inicio">
+            <div class="container hero-grid">
+                <div class="hero-content reveal-up">
+                    <div class="badge-official badge-archive">Archivo Histórico DDU 2025</div>
+                    <h1>Distamus Update 2025 <br><span class="accent-gradient">(DU 2025)</span></h1>
+                    <p class="hero-desc">
+                        Bienvenidos a la primera edición de Distamus Update 2025.
+                    </p>
+                    <div class="hero-ctas">
+                        <a href="#detalles" class="btn btn-accent" id="btnExplore">Ver anuncios</a>
+                        <a href="ddu2026.html" class="btn btn-outline" id="btnGoLatest">Ver edición 2026</a>
+                    </div>
+                </div>
 
-    <!-- SERVICIOS -->
-    <section class="section fade-in">
-        <div class="section-title">Servicios y anuncios</div>
-        <div class="services-grid">
-
-            <!-- Edu v3 -->
-            <div class="service-card">
-                <div class="service-tag">Lanzamiento</div>
-                <h3>Distamus Edu v3</h3>
-                <p class="service-subtitle">Lanzamiento previsto para finales de septiembre de 2025</p>
-                <p>La educación nunca volverá a ser la misma. Distamus Edu v3 llegará con mejoras que transformarán la experiencia de aprendizaje:</p>
-                <ul>
-                    <li>Mejoras sustanciales en las materias</li>
-                    <li>Sistema de boletines renovado</li>
-                    <li>Exámenes modelo PAU y Bachillerato</li>
-                    <li>Nuevas funcionalidades educativas</li>
-                </ul>
+                <div class="hero-visual reveal-up" style="transition-delay: 0.15s;">
+                    <div class="glass-card">
+                        <div class="section-tag" style="margin-bottom: 0.5rem;">Presentación Oficial</div>
+                        <p style="font-size: 1.05rem; font-weight: 300; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                            <strong>DU 2025</strong> no es solo una actualización más. Esta primera edición del Distamus Update marca un antes y un después en nuestra historia, donde la transparencia y la ambición se unen para mostrar la evolución completa de nuestro ecosistema.
+                        </p>
+                        <div class="brand-note" style="border-left: 2px solid var(--accent-purple); padding-left: 1rem; font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
+                            <strong>Nota de marca:</strong> Aunque el evento se presentó inicialmente como <em>Distamus Update</em>, su denominación oficial es <strong>Distamus Day Update</strong>. Este fue el primer nombre que concibió el CEO, pero con el fin de hacerlo más intrigante y asegurar que representara el mejor día para el ecosistema, le añadió la palabra "Day".
+                        </div>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <!-- Time v2.7 -->
-            <div class="service-card">
-                <div class="service-tag">Actualización</div>
-                <h3>Distamus Time v2.7</h3>
-                <p class="service-subtitle">Finales de noviembre de 2025</p>
-                <p>Redefiniendo la gestión del tiempo:</p>
-                <ul>
-                    <li>Mejoras significativas de rendimiento</li>
-                    <li>Sistema Multi-Time v2.5</li>
-                    <li>Reloj analógico mejorado</li>
-                    <li>Precisión refinada</li>
-                </ul>
+        <!-- ANUNCIOS GRID SECTION -->
+        <section class="detalles-section" id="detalles">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <h2>Anuncios y Lanzamientos</h2>
+                    <p>Repaso detallado de todos los servicios presentados e hitos conseguidos durante la primera edición.</p>
+                </div>
+                
+                <div class="grid-3">
+                    
+                    <!-- 1-Distamus Edu v3 -->
+                    <div class="interactive-card reveal-up">
+                        <div class="card-icon" aria-hidden="true">🎓</div>
+                        <div class="badge-official" style="font-size:0.65rem; padding: 4px 10px; margin-bottom: 1rem;">Educación</div>
+                        <h3>1. Distamus Edu v3</h3>
+                        <p style="font-size: 0.85rem; font-weight: 600; color: var(--accent-cyan); margin-bottom: 0.75rem;">
+                            Llega a finales de Septiembre (2025)
+                        </p>
+                        <p>
+                            La educación nunca volverá a ser la misma. Distamus Edu v3 llegará este julio con mejoras que transformarán la experiencia de aprendizaje:
+                        </p>
+                        <ul class="list-bullets">
+                            <li><strong>Mejoras sustanciales en las materias:</strong> Contenido actualizado y optimizado para el aprendizaje moderno.</li>
+                            <li><strong>Sistema de boletines renovado:</strong> Seguimiento más preciso y detallado del progreso académico.</li>
+                            <li><strong>Exámenes modelo PAU y Bachillerato:</strong> Preparación integral para los desafíos académicos más importantes.</li>
+                            <li><strong>Y mucho más:</strong> Funcionalidades que descubrirás al explorar la nueva versión.</li>
+                        </ul>
+                    </div>
+
+                    <!-- 2-Distamus Time v2.7 -->
+                    <div class="interactive-card reveal-up" style="transition-delay: 0.05s;">
+                        <div class="card-icon" aria-hidden="true">⏱️</div>
+                        <div class="badge-official" style="font-size:0.65rem; padding: 4px 10px; margin-bottom: 1rem;">Productividad</div>
+                        <h3>2. Distamus Time v2.7</h3>
+                        <p style="font-size: 0.85rem; font-weight: 600; color: var(--accent-cyan); margin-bottom: 0.75rem;">
+                            Redefiniendo la Gestión del Tiempo
+                        </p>
+                        <p>
+                            A finales de noviembre, el tiempo cobrará una nueva dimensión con Distamus Time v2.7. Esta actualización trae consigo:
+                        </p>
+                        <div class="tech-innovations">
+                            <h5>Innovaciones Técnicas:</h5>
+                            <ul class="list-bullets" style="margin-top: 0.5rem;">
+                                <li><strong>Mejoras de rendimiento significativas:</strong> Experiencia más fluida y responsiva.</li>
+                                <li><strong>Multi-Time v2.5:</strong> La evolución del sistema de gestión múltiple de tiempo incorpora un reloj analógico mejorado, con precisión refinada y una estética cuidada. No es solo decorativo, sino funcional: aporta claridad, sincronización eficaz y refuerza el diseño del sistema.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 3-Distamus Book -->
+                    <div class="interactive-card reveal-up" style="transition-delay: 0.1s;">
+                        <div class="card-icon" aria-hidden="true">📚</div>
+                        <div class="badge-official" style="font-size:0.65rem; padding: 4px 10px; margin-bottom: 1rem;">Biblioteca</div>
+                        <h3>3. Distamus Book</h3>
+                        <p style="font-size: 0.85rem; font-weight: 600; color: var(--accent-cyan); margin-bottom: 0.75rem;">
+                            El Conocimiento Sin Fronteras
+                        </p>
+                        <ul class="list-bullets" style="margin-top: 0;">
+                            <li>
+                                <strong>Distamus Book v1.5 (Septiembre 2025):</strong>
+                                <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.25rem;">
+                                    Tendrá todos los libros en todos los idiomas.
+                                </p>
+                            </li>
+                            <li style="margin-top: 1rem;">
+                                <strong>Distamus Book v2 (Fecha por Definir):</strong>
+                                <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.25rem;">
+                                    La próxima generación de libros digitales está en desarrollo. Mejoras sustanciales que elevarán la experiencia de lectura a nuevos niveles.
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 4-Distamus News -->
+                    <div class="interactive-card rip-card reveal-up" style="transition-delay: 0.15s;">
+                        <div class="card-icon" aria-hidden="true" style="color: #ef4444; border-color: rgba(239, 68, 68, 0.15);">🪦</div>
+                        <div class="badge-official rip-tag" style="font-size:0.65rem; padding: 4px 10px; margin-bottom: 1rem;">Cerrado (R.I.P)</div>
+                        <h3>4. Distamus News</h3>
+                        <p style="font-size: 0.85rem; font-weight: 600; color: #ef4444; margin-bottom: 0.75rem;">
+                            Abril 2025 - Julio 2025
+                        </p>
+                        <p style="color: var(--text-secondary);">
+                            Distamus News se despide hoy. Fue un canal clave para mantenerte informado, pero ha cumplido su ciclo. No desaparece su función, sino su forma: su esencia será asumida por tecnologías más modernas y estructuradas. A partir de DU 2025, Distamus News queda oficialmente cerrado.
+                        </p>
+                    </div>
+
+                    <!-- 5-Distamus AI -->
+                    <div class="interactive-card reveal-up" style="transition-delay: 0.2s;">
+                        <div class="card-icon" aria-hidden="true">🤖</div>
+                        <div class="badge-official" style="font-size:0.65rem; padding: 4px 10px; margin-bottom: 1rem;">Inteligencia Artificial</div>
+                        <h3>5. Distamus AI</h3>
+                        <p style="font-size: 0.85rem; font-weight: 600; color: var(--accent-cyan); margin-bottom: 0.75rem;">
+                            Mucho más que inteligencia (2027)
+                        </p>
+                        <p style="font-size: 0.92rem; line-height: 1.6; margin-bottom: 1rem;">
+                            Distamus AI no será un asistente. Será un núcleo cognitivo estructural que actuará como cerebro distribuido de todo Distamus.
+                        </p>
+                        <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5;">
+                            Entre sus múltiples funciones estará la de gestionar noticias, fuentes, enlaces, autores y derechos. Y aquí es importante ser claros:
+                        </p>
+                        <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin-top: 0.5rem;">
+                            Cuando Distamus AI utilice un enlace a una fuente externa, no se monetizará ni se pagará al autor. El sistema pondrá dicho enlace para que el usuario se redirija directamente al usuario para que pueda navegar el contenido en su web original, evitando descargarlo, copiarlo o representarlo internamente.
+                        </p>
+                        <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin-top: 0.5rem; font-style: italic;">
+                            Esta decisión es deliberada y preventiva. No queremos incurrir en situaciones como la demanda del New York Times contra OpenAI el 27 de diciembre de 2023, donde se acusó a la IA de reproducir contenido protegido sin licencia ni compensación. Asimismo, evitamos conflictos legales con servicios como Cloudflare, cuya infraestructura y políticas de acceso están bajo fuerte presión por peleas similares.
+                        </p>
+                    </div>
+
+                    <!-- 6- Nuevo servicio de Distamus -->
+                    <div class="interactive-card reveal-up" style="transition-delay: 0.25s;">
+                        <div class="card-icon" aria-hidden="true">🚀</div>
+                        <div class="badge-official" style="font-size:0.65rem; padding: 4px 10px; margin-bottom: 1rem;">Desarrollo</div>
+                        <h3>6. Nuevo servicio</h3>
+                        <p style="font-size: 0.85rem; font-weight: 600; color: var(--accent-cyan); margin-bottom: 0.75rem;">
+                            Evolución de Ecosistema
+                        </p>
+                        <p>
+                            Implementaremos un servicio adicional de Distamus, aún por definir, debido a la finalización de Distamus News.
+                        </p>
+                    </div>
+
+                    <!-- 7. Servidor de Discord -->
+                    <div class="interactive-card reveal-up" style="transition-delay: 0.3s;">
+                        <div class="card-icon" aria-hidden="true">💬</div>
+                        <div class="badge-official" style="font-size:0.65rem; padding: 4px 10px; margin-bottom: 1rem;">Comunidad</div>
+                        <h3>7. Servidor de Discord</h3>
+                        <p style="font-size: 0.85rem; font-weight: 600; color: var(--accent-cyan); margin-bottom: 0.75rem;">
+                            Canal de Comunicación
+                        </p>
+                        <p>
+                            En una próxima mini actualización se añadirá el botón de acceso a nuestro servidor de Discord. Aunque estaba previsto para hoy, han surgido imprevistos que requieren mejoras adicionales antes de su publicación.
+                        </p>
+                    </div>
+
+                    <!-- 8. Nuevo vídeo en YouTube muy pronto -->
+                    <div class="interactive-card reveal-up" style="transition-delay: 0.35s;">
+                        <div class="card-icon" aria-hidden="true">📺</div>
+                        <div class="badge-official" style="font-size:0.65rem; padding: 4px 10px; margin-bottom: 1rem;">Multimedia</div>
+                        <h3>8. Conferencia en YouTube</h3>
+                        <p style="font-size: 0.85rem; font-weight: 600; color: var(--accent-cyan); margin-bottom: 0.75rem;">
+                            Conferencia Especial
+                        </p>
+                        <p>
+                            Dos días antes del lanzamiento oficial de Distamus Edu, se publicará un vídeo especial en formato conferencia donde repasaremos todo lo anunciado y lo que está por venir. Estad atentos a nuestras redes sociales para no perderos nada.
+                        </p>
+                    </div>
+
+                    <!-- 9-Personalización en la interfaz de Distamus Home y blogs -->
+                    <div class="interactive-card reveal-up" style="transition-delay: 0.4s;">
+                        <div class="card-icon" aria-hidden="true">🎨</div>
+                        <div class="badge-official" style="font-size:0.65rem; padding: 4px 10px; margin-bottom: 1rem;">Interfaz</div>
+                        <h3>9. Personalización</h3>
+                        <p style="font-size: 0.85rem; font-weight: 600; color: var(--accent-cyan); margin-bottom: 0.75rem;">
+                            Distamus Home y Blogs
+                        </p>
+                        <p>
+                            Como habréis notado, tanto la sección de blogs como el nombre principal que aparece al acceder a la página de inicio de Distamus han sido actualizados. Esperamos que os guste esta renovación. Seguiremos trabajando para ofrecer una experiencia cada vez más moderna, personalizable y visualmente atractiva.
+                        </p>
+                    </div>
+
+                </div>
             </div>
+        </section>
+    </main>
 
-            <!-- Book -->
-            <div class="service-card">
-                <div class="service-tag">Evolución</div>
-                <h3>Distamus Book</h3>
-                <p class="service-subtitle">El conocimiento sin fronteras</p>
-                <p><strong style="color: var(--text); font-weight: 500;">Distamus Book v1.5</strong> — Septiembre 2025. Todos los libros disponibles en todos los idiomas.</p>
-                <p><strong style="color: var(--text); font-weight: 500;">Distamus Book v2</strong> — Fecha por definir. Nueva generación del sistema de lectura digital en desarrollo.</p>
-            </div>
+    <!-- Decoupled Footer component -->
+    <distamus-footer></distamus-footer>
 
-            <!-- Distamus News RIP -->
-            <div class="service-card rip">
-                <div class="service-tag">Cerrado</div>
-                <h3>Distamus News (R.I.P)</h3>
-                <p class="service-subtitle">Abril 2025 – Julio 2025</p>
-                <p>Distamus News fue un canal clave para mantener informados a los usuarios.</p>
-                <p>Su función será asumida por sistemas más modernos dentro del ecosistema Distamus.</p>
-                <p class="note">Desde Distamus Day Update 2025 queda oficialmente cerrado.</p>
-            </div>
-
-            <!-- Distamus AI -->
-            <div class="service-card">
-                <div class="service-tag">Previsto 2027</div>
-                <h3>Distamus AI</h3>
-                <p class="service-subtitle">Previsto para 2027</p>
-                <p>Distamus AI será el núcleo cognitivo estructural del ecosistema Distamus. Gestionará noticias, enlaces, fuentes y autores.</p>
-                <p>Cuando Distamus AI utilice enlaces externos, el usuario será redirigido directamente al contenido original. No se copiarán contenidos ni se monetizarán enlaces externos.</p>
-                <p class="note">Esta decisión evita conflictos legales con plataformas tecnológicas y proveedores de infraestructura.</p>
-            </div>
-
-            <!-- Nuevo servicio -->
-            <div class="service-card">
-                <div class="service-tag">Por definir</div>
-                <h3>Nuevo servicio Distamus</h3>
-                <p class="service-subtitle">&nbsp;</p>
-                <p>Se implementará un nuevo servicio aún por definir como evolución tras el cierre de Distamus News.</p>
-            </div>
-
-            <!-- Discord -->
-            <div class="service-card">
-                <div class="service-tag">Próximamente</div>
-                <h3>Servidor de Discord</h3>
-                <p class="service-subtitle">&nbsp;</p>
-                <p>En una actualización posterior se añadirá el acceso al servidor oficial de Discord.</p>
-            </div>
-
-            <!-- Vídeo oficial -->
-            <div class="service-card">
-                <div class="service-tag">Evento</div>
-                <h3>Vídeo oficial</h3>
-                <p class="service-subtitle">&nbsp;</p>
-                <p>Dos días antes del lanzamiento de Distamus Edu se publicará un vídeo en formato conferencia con todos los anuncios.</p>
-            </div>
-
-            <!-- Personalización -->
-            <div class="service-card">
-                <div class="service-tag">Mejora visual</div>
-                <h3>Personalización de interfaz</h3>
-                <p class="service-subtitle">&nbsp;</p>
-                <p>Se introdujeron mejoras visuales en Distamus Home y en la sección de blogs para ofrecer una experiencia más moderna y personalizable.</p>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-inner">
-            <div class="footer-left">
-                <span class="footer-label">Archivo histórico oficial</span>
-                <span class="footer-event">Distamus Day Update 2025</span>
-                <span class="footer-copy">© Distamus</span>
-            </div>
-            <a href="ddu2026.html" class="footer-link">Ir a DDU 2026</a>
-        </div>
-    </footer>
-
+    <!-- JS Scripts for animations and header adaptation -->
     <script>
+        // Customize header dynamically for the archive page
+        window.addEventListener('DOMContentLoaded', () => {
+            const headerBtn = document.querySelector('distamus-header .header-btn');
+            if (headerBtn) {
+                headerBtn.href = 'index.html';
+                headerBtn.textContent = 'Ir a DDU 2026';
+            }
+            const mobileBtn = document.querySelector('distamus-header .mobile-only-btn');
+            if (mobileBtn) {
+                mobileBtn.href = 'index.html';
+                mobileBtn.textContent = 'Ir a DDU 2026';
+            }
+            
+            // Adjust header background border color for gold theme
+            const siteHeader = document.querySelector('distamus-header .site-header');
+            if (siteHeader) {
+                siteHeader.style.borderBottomColor = 'rgba(200, 169, 110, 0.15)';
+            }
+        });
+
+        // Intersection Observer for Scroll Animations
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, i) => {
+            entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.classList.add('visible');
-                    }, i * 80);
+                    entry.target.classList.add('visible');
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.05 });
+        }, { 
+            threshold: 0.05,
+            rootMargin: '0px 0px -30px 0px'
+        });
 
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
     </script>
-
 </body>
 </html>

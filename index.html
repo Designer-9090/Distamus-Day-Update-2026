@@ -3,321 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Distamus Day Update 2026 | Keynote</title>
+    <title>Distamus Day Update 2026 — El nuevo capítulo comienza</title>
+    <meta name="description" content="DDU 2026 (Distamus Day Update 2026) es el evento anual más importante de Distamus. Únete a nosotros el 10 de julio de 2026 para descubrir la evolución del proyecto.">
     <link rel="icon" type="image/webp" href="distamuslogo.webp">
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/index.css">
     
-    <style>
-        :root {
-            /* Palette Dark Premium */
-            --bg-color: #050507;
-            --card-bg: rgba(255, 255, 255, 0.02);
-            --card-border: rgba(255, 255, 255, 0.06);
-            --accent-primary: #7c3aed;   
-            --accent-secondary: #2563eb; 
-            --text-main: #ffffff;
-            --text-secondary: #cbd5e1;
-            --text-muted: #64748b;
-            --font-heading: 'Lexend', sans-serif;
-            --font-body: 'Poppins', sans-serif;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: var(--font-body);
-            overflow-x: hidden;
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* --- BACKGROUND --- */
-        .fixed-background {
-            position: fixed; inset: 0; z-index: -1; overflow: hidden;
-        }
-        .noise-overlay {
-            position: absolute; inset: 0; opacity: 0.4; pointer-events: none;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
-        }
-        .orb {
-            position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.4;
-            animation: floatOrb 25s infinite ease-in-out alternate;
-        }
-        .orb-1 { width: 60vw; height: 60vw; background: var(--accent-primary); top: -20%; left: -10%; opacity: 0.15; }
-        .orb-2 { width: 50vw; height: 50vw; background: var(--accent-secondary); bottom: -10%; right: -20%; animation-delay: -5s; opacity: 0.1; }
-
-        @keyframes floatOrb {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(30px, 50px); }
-        }
-
-        /* --- HEADER --- */
-        header {
-            position: fixed; top: 0; width: 100%; padding: 1.25rem 5%;
-            display: flex; justify-content: space-between; align-items: center; z-index: 100;
-            background: rgba(5, 5, 7, 0.6); backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--card-border);
-        }
-        .logo {
-            font-family: var(--font-heading); font-weight: 700; font-size: 1.2rem;
-            display: flex; align-items: center; gap: 12px; color: var(--text-main);
-        }
-        .cta-header {
-            font-size: 0.85rem; font-weight: 500; color: var(--text-secondary);
-            border: 1px solid var(--card-border); padding: 8px 20px; border-radius: 100px;
-            text-decoration: none; transition: 0.3s;
-        }
-        .cta-header:hover { background: rgba(255,255,255,0.05); color: white; }
-
-        /* --- HERO --- */
-        .hero {
-            min-height: 90vh; display: flex; align-items: center; justify-content: center;
-            padding: 8rem 5% 4rem; position: relative;
-        }
-        .hero-container {
-            max-width: 1200px; width: 100%; display: grid; grid-template-columns: 1fr 1fr;
-            gap: 5rem; align-items: center;
-        }
-        .tagline {
-            display: inline-block; font-family: var(--font-heading); font-size: 0.75rem;
-            font-weight: 600; text-transform: uppercase; letter-spacing: 2px;
-            color: var(--accent-secondary); margin-bottom: 1.5rem;
-            padding: 6px 12px; border: 1px solid rgba(37, 99, 235, 0.2); border-radius: 100px;
-        }
-        h1 {
-            font-family: var(--font-heading); font-size: clamp(3rem, 5.5vw, 4.5rem);
-            line-height: 1.1; font-weight: 700; margin-bottom: 1.5rem; letter-spacing: -0.04em;
-        }
-        .text-gradient {
-            background: linear-gradient(135deg, #fff 30%, #94a3b8 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        .hero-desc {
-            font-size: 1.1rem; color: var(--text-secondary); max-width: 540px; margin-bottom: 2.5rem; font-weight: 300;
-        }
-        .btn-primary {
-            display: inline-flex; padding: 1rem 2.5rem; background: white; color: black;
-            font-family: var(--font-heading); font-weight: 600; border-radius: 100px; text-decoration: none;
-            transition: 0.3s;
-        }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(255,255,255,0.2); }
-
-        /* --- CARDS & COUNTDOWN --- */
-        .glass-card {
-            background: var(--card-bg); border: 1px solid var(--card-border);
-            backdrop-filter: blur(20px); border-radius: 30px; padding: 3rem;
-        }
-        .countdown-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1rem; }
-        .count-item {
-            text-align: center; background: rgba(0,0,0,0.3); padding: 1.5rem 1rem;
-            border-radius: 20px; border: 1px solid rgba(255,255,255,0.03);
-        }
-        .count-number {
-            font-family: var(--font-heading); font-size: 2.5rem; font-weight: 600; line-height: 1;
-            margin-bottom: 0.5rem; font-variant-numeric: tabular-nums;
-        }
-        .count-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); }
-
-        /* --- FEATURES --- */
-        .grid-3 {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem; max-width: 1200px; margin: 4rem auto; padding: 0 5%;
-        }
-        .feature-card {
-            background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, transparent 100%);
-            border: 1px solid var(--card-border); padding: 2.5rem; border-radius: 24px;
-        }
-        .feature-icon { font-size: 2rem; margin-bottom: 1rem; }
-        .feature-card h3 { font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 0.5rem; }
-        .feature-card p { color: var(--text-muted); font-size: 0.95rem; }
-
-        /* --- INFO / MANIFESTO SECTION --- */
-        .info-section {
-            padding: 8rem 5%; max-width: 900px; margin: 0 auto;
-        }
-        .section-header { text-align: center; margin-bottom: 3rem; }
-        .section-header h2 { font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 1rem; }
-        .section-header p { color: var(--text-secondary); font-size: 1.2rem; }
-
-        .faq-item {
-            border-bottom: 1px solid var(--card-border);
-            padding: 2rem 0;
-        }
-        .faq-item:last-child { border-bottom: none; }
-        
-        .faq-question {
-            background: none; border: none; padding: 0; margin-bottom: 1rem;
-            color: var(--text-main); font-family: var(--font-heading);
-            font-size: 1.3rem; font-weight: 600; text-align: left; width: 100%;
-            pointer-events: none;
-        }
-        
-        .faq-answer {
-            color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8;
-            display: block;
-        }
-
-        .faq-answer strong {
-            color: var(--text-main);
-            font-weight: 600;
-            text-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            border-top: 1px solid var(--card-border); padding: 3rem 5%;
-            text-align: center; margin-top: 5rem;
-        }
-
-        /* --- ANIMATIONS --- */
-        .reveal-up {
-            opacity: 0; transform: translateY(40px); transition: 0.8s cubic-bezier(0.2, 1, 0.3, 1);
-        }
-        .reveal-up.visible { opacity: 1; transform: translateY(0); }
-
-        /* --- RESPONSIVE --- */
-        @media (max-width: 900px) {
-            .hero-container { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
-            .hero-desc { margin: 0 auto 2.5rem; }
-            .countdown-wrapper { margin: 0 auto; }
-        }
-    </style>
+    <!-- Scripts for Decoupled Components -->
+    <script type="module" src="/src/components/Header.js"></script>
+    <script type="module" src="/src/components/Footer.js"></script>
 </head>
 <body>
 
-    <div class="fixed-background">
+    <!-- Ambient Space Background -->
+    <div class="bg-ambient" aria-hidden="true">
         <div class="noise-overlay"></div>
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
+        <div class="glow-orb orb-purple"></div>
+        <div class="glow-orb orb-cyan"></div>
+        <div class="glow-orb orb-center"></div>
     </div>
 
-    <header>
-        <div class="logo">
-            <img src="distamuslogo.webp" alt="Logo" style="width: 32px; height: 32px; border-radius: 8px; object-fit: cover;">
-            Distamus
-        </div>
-        <a href="#ddu-about" class="cta-header">Información</a>
-    </header>
+    <!-- Decoupled Header component -->
+    <distamus-header></distamus-header>
 
-    <section class="hero">
-        <div class="hero-container">
-            <div class="hero-content reveal-up">
-                <div class="tagline">Evento 2026</div>
-                <h1>El futuro empieza<br><span class="text-gradient">el 4 de Julio.</span></h1>
-                <p class="hero-desc">
-                    Un evento único que celebra la innovación, la creatividad y el futuro. ¡Esperamos que os guste!
-                </p>
-                <a href="#ddu-about" class="btn-primary">Saber más</a>
-            </div>
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero" id="inicio">
+            <div class="container hero-grid">
+                <div class="hero-content reveal-up">
+                    <div class="badge-official">Evento Anual Oficial</div>
+                    <h1>El nuevo capítulo de Distamus <br><span class="accent-gradient">comienza aquí.</span></h1>
+                    <p class="hero-desc">
+                        DDU 2026 (Distamus Day Update 2026) es el evento anual más importante de Distamus. No es una simple actualización ni una recopilación de cambios menores: representa el momento en el que se presenta la nueva etapa del proyecto.
+                    </p>
+                    <div class="hero-ctas">
+                        <a href="#filosofia" class="btn btn-accent" id="btnExplore">Explorar novedades</a>
+                        <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Distamus+Day+Update+2026+(DDU2026)&dates=20260710T160000Z/20260710T180000Z&details=DDU+2026+(Distamus+Day+Update+2026)+es+el+evento+anual+m%C3%A1s+importante+de+Distamus.+The+Next+Chapter+Begins.&location=Online" target="_blank" class="btn btn-outline" id="btnCalendar">Añadir al calendario</a>
+                    </div>
+                </div>
 
-            <div class="hero-visual reveal-up" style="transition-delay: 0.2s;">
-                <div class="glass-card">
-                    <div style="text-align:center; font-family: var(--font-heading); letter-spacing: 2px; text-transform: uppercase; font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 20px; font-weight: 600;">Tiempo Restante</div>
-                    <div class="countdown-grid">
-                        <div class="count-item"><span class="count-number" id="days">00</span><span class="count-label">Días</span></div>
-                        <div class="count-item"><span class="count-number" id="hours">00</span><span class="count-label">Horas</span></div>
-                        <div class="count-item"><span class="count-number" id="minutes">00</span><span class="count-label">Min</span></div>
-                        <div class="count-item"><span class="count-number" id="seconds">00</span><span class="count-label">Seg</span></div>
+                <div class="hero-visual reveal-up" style="transition-delay: 0.15s;">
+                    <div class="glass-card countdown-card">
+                        <div class="countdown-title">Tiempo restante para el lanzamiento</div>
+                        <div class="countdown-grid">
+                            <div class="countdown-box">
+                                <div class="countdown-num" id="days">00</div>
+                                <div class="countdown-label">Días</div>
+                            </div>
+                            <div class="countdown-box">
+                                <div class="countdown-num" id="hours">00</div>
+                                <div class="countdown-label">Horas</div>
+                            </div>
+                            <div class="countdown-box">
+                                <div class="countdown-num" id="minutes">00</div>
+                                <div class="countdown-label">Minutos</div>
+                            </div>
+                            <div class="countdown-box">
+                                <div class="countdown-num" id="seconds">00</div>
+                                <div class="countdown-label">Segundos</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <div class="grid-3">
-        <div class="feature-card reveal-up">
-            <div class="feature-icon">✨</div>
-            <h3>Innovación</h3>
-            <p>Últimas novedades tecnológicas presentadas en directo.</p>
-        </div>
-        <div class="feature-card reveal-up" style="transition-delay: 0.1s;">
-            <div class="feature-icon">🎨</div>
-            <h3>Creatividad</h3>
-            <p>Experiencias diseñadas para inspirar a creadores.</p>
-        </div>
-        <div class="feature-card reveal-up" style="transition-delay: 0.2s;">
-            <div class="feature-icon">🌟</div>
-            <h3>Comunidad</h3>
-            <p>Un espacio donde conectar con desarrolladores globales.</p>
-        </div>
-    </div>
+        <!-- PHILOSOPHY SECTION (ARTICLE) -->
+        <article class="manifesto-section" id="filosofia">
+            <div class="container manifesto-content reveal-up">
+                <span class="section-tag">Nuestra Filosofía</span>
+                <blockquote class="manifesto-quote">
+                    "No se trata solo de actualizar. Se trata de avanzar."
+                </blockquote>
+                <div class="manifesto-divider"></div>
+                <p class="manifesto-body">
+                    DDU 2026 está diseñado para marcar un antes y un después, redefiniendo la dirección del proyecto y estableciendo el rumbo de lo que vendrá después. Es una celebración del progreso, pero también una declaración de intenciones.
+                </p>
+            </div>
+        </article>
 
-    <section class="info-section" aria-labelledby="ddu-about">
-        <div class="section-header reveal-up">
-            <h2 id="ddu-about">Distamus Day Update</h2>
-            <p>El evento anual donde Distamus evoluciona.</p>
-        </div>
-
-        <div class="glass-card reveal-up">
-            <div class="faq-item active">
-                <button class="faq-question" style="cursor: default;">
-                    ¿Qué es Distamus Day Update?
-                </button>
-                <div class="faq-answer">
-                    <strong>Distamus Day Update (DDU)</strong> es un evento anual que se celebra cada
-                    <strong>4 de julio</strong>, concebido como el espacio oficial donde el equipo de
-                    Distamus presenta, mejora y consolida tanto productos existentes como nuevas
-                    iniciativas del ecosistema.
+        <!-- EVOLUTION / ¿QUÉ SIGNIFICA DDU? SECTION -->
+        <section class="detalles-section" id="detalles">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <h2>¿Qué significa DDU 2026?</h2>
+                    <p>DDU es sinónimo de evolución, donde meses de trabajo convergen en una sola visión.</p>
+                </div>
+                
+                <div class="grid-3">
+                    <div class="interactive-card reveal-up">
+                        <div class="card-icon" aria-hidden="true">🧬</div>
+                        <h3>Evolución constante</h3>
+                        <p>DDU es sinónimo de evolución. No nos conformamos con el estado actual; buscamos redefinir constantemente los límites de nuestro ecosistema.</p>
+                    </div>
+                    <div class="interactive-card reveal-up" style="transition-delay: 0.1s;">
+                        <div class="card-icon" aria-hidden="true">✨</div>
+                        <h3>Experiencia real</h3>
+                        <p>Es el día en el que meses de trabajo dejan de ser ideas, pruebas y desarrollo interno para convertirse en una experiencia real para todos los usuarios.</p>
+                    </div>
+                    <div class="interactive-card reveal-up" style="transition-delay: 0.2s;">
+                        <div class="card-icon" aria-hidden="true">🎯</div>
+                        <h3>Convergencia única</h3>
+                        <p>Cada decisión, cada mejora y cada detalle convergen en un único lanzamiento. Una visión unificada de todas nuestras plataformas.</p>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="faq-item active">
-                <button class="faq-question" style="cursor: default;">
-                    ¿Cuál es el propósito del evento?
-                </button>
-                <div class="faq-answer">
-                    DDU no es solo una actualización. Es una muestra de
-                    <strong>compromiso y fidelidad</strong> con la comunidad, una forma directa y
-                    transparente de compartir el estado real del proyecto, su evolución técnica
-                    y la dirección que tomará en el futuro.
+        <!-- EXPECTATIONS & UNIQUE EVENT SECTION -->
+        <section class="esperar-section" id="esperar">
+            <div class="container esperar-grid">
+                <div class="reveal-up">
+                    <span class="section-tag">La Comunidad</span>
+                    <div class="side-feature-card">
+                        <h3>Un evento único</h3>
+                        <p>A diferencia de otras actualizaciones, DDU ocurre una vez al año y concentra los anuncios más importantes.</p>
+                        <div class="quote-highlight">
+                            Es el equivalente al gran momento de Distamus. El día en el que todo cambia.
+                        </div>
+                        <p style="font-size: 0.95rem; opacity: 0.8;">
+                            Tras el retraso oficial desde su fecha inicial, el evento tendrá lugar el <strong>10 de julio de 2026</strong>.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="reveal-up" style="transition-delay: 0.15s;">
+                    <span class="section-tag">Expectativas</span>
+                    <h3 style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; margin-bottom: 2.5rem; letter-spacing: -1px;">¿Qué puede esperar la comunidad?</h3>
+                    <div class="list-expectations">
+                        <div class="expect-item">
+                            <div class="expect-num">01</div>
+                            <div class="expect-info">
+                                <h4>Una nueva etapa</h4>
+                                <p>El comienzo de una trayectoria rediseñada para todo el ecosistema.</p>
+                            </div>
+                        </div>
+                        <div class="expect-item">
+                            <div class="expect-num">02</div>
+                            <div class="expect-info">
+                                <h4>Cambios significativos</h4>
+                                <p>Mejoras estructurales profundas que impactan la usabilidad diaria.</p>
+                            </div>
+                        </div>
+                        <div class="expect-item">
+                            <div class="expect-num">03</div>
+                            <div class="expect-info">
+                                <h4>Una visión más madura y ambiciosa</h4>
+                                <p>Metas claras y desarrollos consolidados para el futuro digital.</p>
+                            </div>
+                        </div>
+                        <div class="expect-item">
+                            <div class="expect-num">04</div>
+                            <div class="expect-info">
+                                <h4>Sorpresas preparadas durante meses</h4>
+                                <p>Anuncios especiales que mantendrán expectante a la comunidad.</p>
+                            </div>
+                        </div>
+                        <div class="expect-item">
+                            <div class="expect-num">05</div>
+                            <div class="expect-info">
+                                <h4>El comienzo de un nuevo capítulo</h4>
+                                <p>The Next Chapter Begins. Una nueva era para Distamus.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="faq-item active">
-                <button class="faq-question" style="cursor: default;">
-                    ¿Cómo se puede experimentar Distamus Day Update?
-                </button>
-                <div class="faq-answer">
-                    El evento está diseñado para ser accesible desde cualquier dispositivo.
-                    Queremos que <strong>Distamus Day Update sea el mejor lugar para todos</strong>,
-                    incluso cuando se vive desde una sola pantalla.
+        <!-- OUTRO / FINAL CTA -->
+        <section class="outro-section">
+            <div class="container reveal-up">
+                <div class="outro-card">
+                    <h2 class="outro-title text-gradient">DDU 2026</h2>
+                    <div class="outro-subtitle">10 de Julio de 2026</div>
+                    <p class="outro-desc">
+                        Porque algunas actualizaciones mejoran las cosas. <strong>DDU las transforma.</strong>
+                    </p>
+                    <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Distamus+Day+Update+2026+(DDU2026)&dates=20260710T160000Z/20260710T180000Z&details=DDU+2026+(Distamus+Day+Update+2026)+es+el+evento+anual+m%C3%A1s+importante+de+Distamus.+The+Next+Chapter+Begins.&location=Online" target="_blank" class="btn btn-accent" id="btnCalendarOutro">Asegura tu lugar en el evento</a>
                 </div>
             </div>
+        </section>
+    </main>
 
-            <div class="faq-item active">
-                <button class="faq-question" style="cursor: default;">
-                    ¿La fecha y el horario son fijos?
-                </button>
-                <div class="faq-answer">
-                    El horario del evento puede ajustarse en futuras ediciones si las circunstancias
-                    lo requieren. En ausencia de cambios relevantes, Distamus Day Update se celebrará
-                    conforme al calendario previsto cada <strong>4 de julio</strong>.
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Decoupled Footer component -->
+    <distamus-footer></distamus-footer>
 
-    <footer>
-        <div class="logo" style="justify-content: center; margin-bottom: 1rem;">Distamus Inc.</div>
-        <p style="color: var(--text-muted); font-size: 0.85rem;">© 2026 Distamus Day Update. Diseñado para el futuro.</p>
-        <div style="margin-top: 1.5rem;">
-            <a href="ddu2025.html" style="font-size: 0.82rem; color: var(--text-muted); text-decoration: none; border: 1px solid var(--card-border); padding: 8px 20px; border-radius: 100px; transition: 0.3s; display: inline-block;">← Archivo DDU 2025</a>
-        </div>
-    </footer>
-
+    <!-- JS Scripts for animations and countdown -->
     <script>
-        // Countdown
+        // Countdown target date: July 10, 2026 16:00:00 (Europe/Madrid offset matches UTC+2 during daylight savings)
         function updateCountdown() {
-            const eventDate = new Date('July 4, 2026 16:00:00').getTime();
+            const eventDate = new Date('July 10, 2026 16:00:00').getTime();
             const now = new Date().getTime();
             const distance = eventDate - now;
 
-            const format = (num) => num < 10 ? `0${num}` : num;
+            const format = (num) => String(num).padStart(2, '0');
             
             if (distance > 0) {
                 const days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -329,19 +209,28 @@
                 document.getElementById('hours').innerText = format(hours);
                 document.getElementById('minutes').innerText = format(minutes);
                 document.getElementById('seconds').innerText = format(seconds);
+            } else {
+                document.getElementById('days').innerText = "00";
+                document.getElementById('hours').innerText = "00";
+                document.getElementById('minutes').innerText = "00";
+                document.getElementById('seconds').innerText = "00";
             }
         }
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // Reveal Animations
+        // Intersection Observer for Scroll Animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1 });
+        }, { 
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
 
         document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
     </script>
