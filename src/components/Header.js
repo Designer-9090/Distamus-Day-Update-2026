@@ -11,6 +11,7 @@ class DistamusHeader extends HTMLElement {
           <a href="index.html#filosofia" class="nav-link-item">Filosofía</a>
           <a href="index.html#detalles" class="nav-link-item">Evolución</a>
           <a href="index.html#esperar" class="nav-link-item">Novedades</a>
+          <a href="next-chapter.html" class="nav-link-item">Blogs</a>
           <a href="ddu2025.html" class="mobile-only-btn">← DDU 2025</a>
         </nav>
         <div class="header-actions">

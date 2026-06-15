@@ -2,7 +2,9 @@
   "rewrites": [
     { "source": "/ddu2025", "destination": "/ddu2025.html" },
     { "source": "/inicio", "destination": "/index.html" },
-    { "source": "/ddu2026", "destination": "/ddu2026.html" }
+    { "source": "/ddu2026", "destination": "/ddu2026.html" },
+    { "source": "/next-chapter", "destination": "/next-chapter.html" },
+    { "source": "/secret-vault", "destination": "/secret-vault.html" }
   ],
   "cleanUrls": true
 }

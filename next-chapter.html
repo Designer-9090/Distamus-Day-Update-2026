@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DDU 2026 — The Next Chapter Begins | Blogs</title>
+    <meta name="description" content="Explora los blogs oficiales de Distamus Day Update 2026. Conoce en profundidad las novedades, la tecnología y el rumbo del ecosistema.">
+    <link rel="icon" type="image/webp" href="distamuslogo.webp">
+    
+    <link rel="stylesheet" href="/src/index.css">
+    
+    <style>
+      .blogs-hero {
+        padding-top: 150px;
+        padding-bottom: 4rem;
+        text-align: center;
+      }
+      
+      .blog-meta {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 1rem;
+        font-size: 0.8rem;
+        color: var(--text-muted);
+      }
+      
+      .blog-read-btn {
+        margin-top: 2rem;
+        font-family: var(--font-heading);
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-decoration: none;
+        color: var(--accent-cyan);
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        transition: transform 0.3s, color 0.3s;
+      }
+      
+      .blog-read-btn:hover {
+        color: var(--text-light);
+        transform: translateX(4px);
+      }
+      
+      .secret-card {
+        margin-top: 6rem;
+        border: 1px dashed rgba(139, 92, 246, 0.25);
+        background: linear-gradient(135deg, rgba(139, 92, 246, 0.03) 0%, rgba(0, 0, 0, 0.4) 100%);
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .secret-card::after {
+        content: '';
+        position: absolute;
+        bottom: -50px;
+        right: -50px;
+        width: 150px;
+        height: 150px;
+        background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+        filter: blur(20px);
+        pointer-events: none;
+      }
+      
+      .secret-badge {
+        font-family: var(--font-heading);
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        color: #a78bfa;
+        border: 1px solid rgba(167, 139, 250, 0.2);
+        background: rgba(167, 139, 250, 0.05);
+        padding: 4px 10px;
+        border-radius: 4px;
+        display: inline-block;
+        margin-bottom: 1.5rem;
+      }
+    </style>
+    
+    <!-- Scripts for Decoupled Components -->
+    <script type="module" src="/src/components/Header.js"></script>
+    <script type="module" src="/src/components/Footer.js"></script>
+</head>
+<body>
+
+    <!-- Ambient Space Background -->
+    <div class="bg-ambient" aria-hidden="true">
+        <div class="noise-overlay"></div>
+        <div class="glow-orb orb-purple"></div>
+        <div class="glow-orb orb-cyan"></div>
+        <div class="glow-orb orb-center"></div>
+    </div>
+
+    <!-- Decoupled Header component -->
+    <distamus-header></distamus-header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="blogs-hero">
+            <div class="container reveal-up">
+                <span class="section-tag">Distamus Blogs</span>
+                <h1 class="text-gradient" style="font-family: var(--font-heading); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; letter-spacing: -2px; margin-bottom: 1rem;">
+                    DDU 2026: <br><span class="accent-gradient">The Next Chapter Begins</span>
+                </h1>
+                <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto; font-size: 1.1rem; font-weight: 300;">
+                    Edición especial de desarrollo. Los creadores analizan en profundidad los cambios estructurales, la tecnología y las decisiones de la actualización de este año.
+                </p>
+            </div>
+        </section>
+
+        <!-- BLOGS GRID -->
+        <section class="detalles-section" style="padding-top: 2rem;">
+            <div class="container">
+                <div class="grid-3">
+                    
+                    <!-- Blog Card 1 -->
+                    <article class="interactive-card reveal-up">
+                        <div class="blog-meta">
+                            <span>Educación</span>
+                            <span>•</span>
+                            <span>Julio 2026</span>
+                        </div>
+                        <h3>La nueva era del aprendizaje: Distamus Edu v3</h3>
+                        <p style="margin-top: 1rem;">
+                            Un análisis técnico sobre cómo el rediseño completo de las asignaturas, el nuevo motor de boletines y la preparación para las pruebas PAU transformarán las herramientas académicas de los estudiantes.
+                        </p>
+                        <a href="index.html#detalles" class="blog-read-btn">
+                            Leer análisis completo <span>→</span>
+                        </a>
+                    </article>
+
+                    <!-- Blog Card 2 -->
+                    <article class="interactive-card reveal-up" style="transition-delay: 0.1s;">
+                        <div class="blog-meta">
+                            <span>Diseño & UI</span>
+                            <span>•</span>
+                            <span>Julio 2026</span>
+                        </div>
+                        <h3>Multi-Time v2.5: Redefiniendo el paso del tiempo</h3>
+                        <p style="margin-top: 1rem;">
+                            Descubre cómo nuestro equipo de UX integró un reloj analógico de precisión en el gestor múltiple de tiempo y optimizó el renderizado por GPU para garantizar un consumo mínimo de batería.
+                        </p>
+                        <a href="index.html#detalles" class="blog-read-btn">
+                            Leer análisis completo <span>→</span>
+                        </a>
+                    </article>
+
+                    <!-- Blog Card 3 -->
+                    <article class="interactive-card reveal-up" style="transition-delay: 0.2s;">
+                        <div class="blog-meta">
+                            <span>Seguridad & IA</span>
+                            <span>•</span>
+                            <span>Julio 2026</span>
+                        </div>
+                        <h3>Distamus AI: Privacidad de datos y el caso NYT</h3>
+                        <p style="margin-top: 1rem;">
+                            Explicamos la arquitectura preventiva de nuestro núcleo cognitivo para 2027. Por qué evitamos la monetización de enlaces externos y cómo protegemos la autoría del contenido original.
+                        </p>
+                        <a href="index.html#detalles" class="blog-read-btn">
+                            Leer análisis completo <span>→</span>
+                        </a>
+                    </article>
+                    
+                </div>
+
+                <!-- SECRET ACCORDION / CARD ONLY AVAILABLE HERE -->
+                <div class="glass-card secret-card reveal-up" style="margin-top: 5rem;">
+                    <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                        <span class="secret-badge">📁 REGISTRO RESTRINGIDO</span>
+                        <h3 style="font-family: var(--font-heading); font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem;">Terminal de Control Encriptada</h3>
+                        <p style="color: var(--text-secondary); max-width: 700px; margin-bottom: 2rem; font-size: 0.95rem; line-height: 1.7;">
+                            Esta sección contiene un enlace cifrado que conecta directamente con la base de datos de desarrollo del núcleo cognitivo **Distamus AI** previsto para 2027. Acceso exclusivo para el personal técnico autorizado de Distamus.
+                        </p>
+                        <a href="secret-vault.html" class="btn btn-outline" style="border-color: rgba(167, 139, 250, 0.4); color: #c084fc; font-size: 0.85rem; padding: 0.8rem 1.8rem;">
+                            🔒 Descifrar URL Secreta
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Decoupled Footer component -->
+    <distamus-footer></distamus-footer>
+
+    <script>
+        // Intersection Observer for Scroll Animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { 
+            threshold: 0.05,
+            rootMargin: '0px 0px -30px 0px'
+        });
+
+        document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
+        
+        // Highlight active nav link
+        window.addEventListener('DOMContentLoaded', () => {
+            const blogLink = document.querySelector('distamus-header .nav-link-item[href="next-chapter.html"]');
+            if (blogLink) {
+                blogLink.style.color = 'var(--text-light)';
+            }
+        });
+    </script>
+</body>
+</html>
